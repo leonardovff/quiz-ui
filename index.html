@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
   <meta name="description" content="QR Code scanner">
   <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript">
-  <meta name="language" content="Portuguese">
   <meta name="robots" content="no-index, no-follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web QR</title>
@@ -14,12 +14,12 @@
 <main>
   <section id="captura">
     <div id="outdiv">
-      <video id="v" autoplay="" src=""></video>
+      <video id="video" autoplay="" src=""></video>
     </div>
   </section>
   <section>
-    <img class="selector" id="webcamimg" src="assets/vid.png" onclick="setwebcam()" align="left" style="opacity: 1;">
-    <div id="result"><br><b>teste</b><br><br></div>
+  <!--   <img class="selector" id="webcamimg" src="assets/vid.png" onclick="setwebcam()" align="left" style="opacity: 1;"> -->
+    <div id="result"></div>
     <canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
   </section>
 </main>

@@ -11,7 +11,7 @@ var moz=false;
 var v=null;
 
 
-var vidhtml = '<video id="v" autoplay></video>';
+var vidhtml = '<video id="video" autoplay></video>';
 
 function initCanvas(w,h)
 {
@@ -56,7 +56,7 @@ function read(a)
     var html="<br>";
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
         html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b>"+htmlEntities(a)+"</b><br><br>";
+    html+="valor: <b>"+htmlEntities(a)+"</b><br><br>";
     document.getElementById("result").innerHTML=html;
 }	
 
@@ -143,7 +143,7 @@ function setwebcam2(options)
     console.log(options);
     var n=navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
-    v=document.getElementById("v");
+    v=document.getElementById("video");
     //options.optional = [{sourceId: camId}];
 
     if(n.getUserMedia)

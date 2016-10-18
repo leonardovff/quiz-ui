@@ -22,12 +22,9 @@ main>section{
 	height: 100%;
 	position: absolute;
 }
-#footer{
-    background:white;
-}
-#v{
-    width:320px;
-    height:240px;
+#video{
+    width:100%;
+    height: 100%;
 }
 #qr-canvas{
     display:none;
@@ -39,20 +36,7 @@ main>section{
 #mp1{
     text-align:center;
     font-size:35px;
-}
-#imghelp{
-    position:relative;
-    left:0px;
-    top:-160px;
-    z-index:100;
-    font:18px arial,sans-serif;
-    background:#f0f0f0;
-	margin-left:35px;
-	margin-right:35px;
-	padding-top:10px;
-	padding-bottom:10px;
-	border-radius:20px;
-}
+} 
 .selector{
     margin:0;
     padding:0;
@@ -64,35 +48,10 @@ main>section{
   width: 100%;
   height: 100%;
   position: absolute;
-  border: solid;
-  border-width: 3px 3px 3px 3px;
 }
 #result{
-    border: solid;
-	border-width: 1px 1px 1px 1px;
+	color: white;
+	font-size: 40px;
 	padding:20px;
 	width:70%;
-}
-
-ul{
-    margin-bottom:0;
-    margin-right:40px;
-}
-li{
-    display:inline;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-    font-weight: bold;
-    border-right: 1px solid #333333;
-}
-li a{
-    text-decoration: none;
-    color: black;
-}
-
-#footer a{
-	color: black;
-}
-.tsel{
-    padding:0;
 }

@@ -55,7 +55,7 @@ main>section:nth-child(1){
 	padding: 0 10px;
 	text-transform: uppercase;
 	color: white;
-	font-size: 66px;
+	font-size: 66pt;
 }
 #inserirManualmente{
 	left: 2.5%;
@@ -107,11 +107,11 @@ main>section:nth-child(1){
 	left: 3.7%;
 	bottom: 1.6%;
 	text-align: left;
-	font-size: 29px;
+	font-size: 29pt;
 }
 .area{
 	bottom: 2.5%;
 	right:3.8%;
-	font-size: 42px;
+	font-size: 40pt;
 	text-align: right;
 }

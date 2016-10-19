@@ -32,7 +32,7 @@ main>section, #outdiv{
 	position: absolute;
 }
 main>section{
-	/*display: none;*/
+	display: none;
 }
 main>section:nth-child(1){
 	display: block;

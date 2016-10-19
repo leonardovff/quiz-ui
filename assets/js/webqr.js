@@ -114,7 +114,7 @@ function load()
 {
     var elem = document.getElementById("fullscreen");
     elem.addEventListener('click',function(){
-        var fullscren = controlFullScreen(elem);
+        var fullscren = controlFullScreen(document.querySelector('body'));
         console.log(fullscren);
         fullscren.open();
     },false);

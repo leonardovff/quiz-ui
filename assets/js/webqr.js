@@ -46,7 +46,33 @@ function captureToCanvas() {
         };
     }
 }
-
+var controlFullScreen = function (el){
+    return {
+        open: function(){
+            if (el.requestFullscreen) {
+              el.requestFullscreen();
+            } else if (el.msRequestFullscreen) {
+              el.msRequestFullscreen();
+            } else if (el.mozRequestFullScreen) {
+              el.mozRequestFullScreen();
+            } else if (el.webkitRequestFullscreen) {
+              el.webkitRequestFullscreen();
+            }
+        },
+        close: function(){
+            if (el.exitFullscreen) {
+              el.exitFullscreen();
+            } else if (el.msExitFullscreen) {
+              el.msExitFullscreen();
+            } else if (el.mozExitFullscreen) {
+              el.mozExitFullscreen();
+            } else if (el.webkitExitFullscreen) {
+              el.webkitExitFullscreen();
+            } 
+        }
+    }
+}
+   
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -86,6 +112,12 @@ function error(error) {
 
 function load()
 {
+    var elem = document.getElementById("fullscreen");
+    elem.addEventListener('click',function(){
+        var fullscren = controlFullScreen(elem);
+        console.log(fullscren);
+        fullscren.open();
+    },false);
 	if(isCanvasSupported() && window.File && window.FileReader)
 	{
 		initCanvas(800, 600);

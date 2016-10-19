@@ -12,16 +12,25 @@
 
 <body>
 <main>
+  <section> 
+    <button type="button" id="fullscreen">Começar</button>
+  </section>
   <section id="captura">
     <div id="outdiv">
       <video id="video" autoplay="" src=""></video>
     </div>
+    <canvas id="qr-canvas"></canvas>
+    <div id="result"></div>
+    <p id="instrucao">Apresente seu código de barra</p>
+    <button id="inserirManualmente" type="button">Inserir manualmente</button>
+    <p>Nome equipe<br>Alagoas</p>
+    <p>Construção <br>e Dificações</p>
+    <div id="esq_baixo"></div>
+    <div id="dir_baixo"></div>
   </section>
   <section>
   <!--   <img class="selector" id="webcamimg" src="assets/vid.png" onclick="setwebcam()" align="left" style="opacity: 1;"> -->
-    <button type="button" id="fullscreen">Full-Screen</button>
-    <div id="result"></div>
-    <canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
+    
   </section>
 </main>
 <script type="text/javascript" src="assets/js/llqrcode.js"></script>

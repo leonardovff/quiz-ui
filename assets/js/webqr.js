@@ -113,9 +113,10 @@ function error(error) {
 function load()
 {
     var elem = document.getElementById("fullscreen");
-    elem.addEventListener('click',function(){
+    elem.addEventListener('click',function(){ 
+        document.querySelector("main>section:nth-child(1)").style.display = "none";
+        document.getElementById("captura").style.display = "block";
         var fullscren = controlFullScreen(document.querySelector('body'));
-        console.log(fullscren);
         fullscren.open();
     },false);
 	if(isCanvasSupported() && window.File && window.FileReader)

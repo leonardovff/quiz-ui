@@ -61,10 +61,12 @@ main>section:nth-child(1){
 }
  
 #result{
+	position: absolute;
+	top:50%;
 	color: white;
 	font-size: 40px;
 	padding:20px;
-	width:70%;
+	width:100%;
 }
 #esq_baixo{
 	width: 58%;

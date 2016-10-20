@@ -6,26 +6,35 @@
   <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript">
   <meta name="robots" content="no-index, no-follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web QR</title>
+  <title>Sistema de Votação de Visitantes</title>
   <link rel="stylesheet" type="text/css" href="assets/css/app.css">
 </head>
 
 <body>
 <main>
-  <section> 
-    <button type="button" id="fullscreen">Começar</button>
-  </section>
-  <section id="captura">
+  <section data-status="step-atual" id="captura">
     <div id="outdiv">
       <video id="video" autoplay="" src=""></video>
     </div>
     <canvas id="qr-canvas"></canvas>
-    <div id="result"></div>
-    <p id="instrucao">Apresente seu código de barra</p>
-    <button id="inserirManualmente" type="button">Inserir manualmente</button>
-    <div id="esq_baixo"></div>
-    <div id="dir_baixo"></div>
-    <p class="equipe_regional">Nome equipe<br>Alagoas</p>
+    <div data-status="step-atual" class="instrucoes step-captura" id="instrucao-inicio">
+      <h2>Gostou do projeto?</h2> 
+      <h3>Participe da votação popular!</h3>
+      <button class="btn-go" type="button" id="fullscreen">Iniciar</button>
+    </div>
+    <div class="instrucoes step-captura" id="instrucao-leitura"> 
+      <div id="result"></div>
+      <h3 class="instrucoes">Participe da votação popular!</h3>
+      <button id="inserir-manualmente" type="button">Inserir manualmente</button>
+    </div>
+    <div class="step-captura">
+      <h4>INSERIR MANUALMENTE</h4>
+      <label for="cod-usuario">Digite o código da pulseira ou crachá</label>
+      <input type="number" id="cod-usuario" name="cod-usuario">
+    </div>
+    <div id="esq-baixo"></div>
+    <div id="dir-baixo"></div>
+    <p class="equipe-regional">Nome equipe<br>Alagoas</p>
     <p class="area">Construção<br>e Dificações</p>
   </section>
   <section>
@@ -35,6 +44,8 @@
 </main>
 <script type="text/javascript" src="assets/js/llqrcode.js"></script>
 <script type="text/javascript" src="assets/js/webqr.js"></script>
+<script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
+<!-- <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script> -->
 <script type="text/javascript">load();</script>
 </body>
 </html>

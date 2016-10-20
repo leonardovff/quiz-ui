@@ -45,14 +45,14 @@ main>section[data-status="step-atual"]{
     width:100%;
     height: 100%;
 }
-.step-captura[data-status="step-atual"]{
+.step-captura[data-status="active"]{
 	display: block;
 }
 #instrucao-inicio{
 	top: 26.4%;
 	padding: 10vh 6.3vw;
 }
-#instrucao-leitura{
+#instrucao-leitura .instrucoes{
 	top:11%;
 }
 .instrucoes{

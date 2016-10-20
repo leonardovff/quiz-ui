@@ -112,13 +112,19 @@ function error(error) {
 
 function load()
 {
-    var elem = document.getElementById("fullscreen");
+    var entrar = document.getElementById("entrar"),
+    elem = document.getElementById("fullscreen");
     elem.addEventListener('click',function(){ 
         console.log("entrou");
         document.querySelector(".step-captura[data-status='active']").dataset.status = "no-active";
         document.querySelector("#instrucao-leitura").dataset.status = "active";
+    },false);
+
+    entrar.addEventListener('click',function(){ 
+        document.querySelector("main>section[data-status='step-atual']").dataset.status = "no-active";
+        document.querySelector("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));
-        // fullscren.open();
+        fullscren.open();
     },false);
 	if(isCanvasSupported() && window.File && window.FileReader)
 	{

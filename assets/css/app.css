@@ -159,6 +159,12 @@ h3{
 	height: 0.08vh;
 	top: 89vh;
 }
+#time{
+	background: #ffb0b4;
+	border: 50%;
+	width: 8vw;
+	height: 8vw;
+}
 #pergunta .tarja{
 	margin-top: 34vh;
 }

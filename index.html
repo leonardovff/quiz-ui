@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+  <meta name="description" content="QR Code scanner">
+  <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript">
+  <meta name="robots" content="no-index, no-follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Votação de Visitantes</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+</head>
+
+<body>
+<div id="todo">
+  <section id="login" class="caixa-input">
+    <button type="button" name="entrar" id="entrar">Entrar</button>
+  </section>
+  <section id="captura">
+    <div id="outdiv">
+      <video id="video" autoplay="" src=""></video>
+    </div>
+    <canvas id="qr-canvas"></canvas>
+    <div data-status="active" class="instrucoes step-captura" id="instrucao-inicio">
+      <h2>Gostou do projeto?</h2> 
+      <h3>Participe da votação popular!</h3>
+      <button class="btn-go" type="button" id="fullscreen">Iniciar</button>
+    </div>
+    <div class="step-captura" id="instrucao-leitura"> 
+      <div id="result"></div>
+      <h3 class="instrucoes">Apresente seu QR CODE e participe da votação popular!</h3>
+      <button id="inserir-manualmente" type="button">Inserir manualmente</button>
+    </div>
+    <div class="step-captura caixa-input">
+      <h4>INSERIR MANUALMENTE</h4>
+      <label for="cod-usuario">Digite o código da pulseira ou crachá</label>
+      <input type="number" id="cod-usuario" name="cod-usuario">
+    </div>
+    <div id="esq-baixo"></div>
+    <div id="dir-baixo"></div>
+    <p class="equipe-regional">Nome equipe<br>Alagoas</p>
+    <p class="area">Construção<br>e Dificações</p>
+  </section>
+  <section id="pergunta" data-status="step-atual">
+    <div id="dir-alto"></div>
+    <div id="esq-alto"></div>
+    <p class="equipe-regional">Nome equipe<br>Alagoas</p>
+    <p class="area">Construção<br>e Dificações</p>
+    <div id="time">30</div>
+    <div class="tarja">
+      <h3>Você gostou do projeto e o recomendaria a um amigo?</h3>
+      <ul>
+        <li><span>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+    <button class="btn-go" type="button" id="confirmar">CONFIRMAR</button>
+
+  </section>
+</div>
+<script type="text/javascript" src="assets/js/llqrcode.js"></script>
+<script type="text/javascript" src="assets/js/webqr.js"></script>
+<script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
+<!-- <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script> -->
+<script type="text/javascript">load();</script>
+</body>
+</html>

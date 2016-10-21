@@ -149,6 +149,7 @@ h3{
 }
 #pergunta{
 	background: url("../img/logos.png") no-repeat center 91.1vh;
+	background-size: 89% auto;
 }
 #pergunta::after{
 	background: #d4d4d4;
@@ -160,13 +161,18 @@ h3{
 	top: 89vh;
 }
 #time{
-	background: #ffb0b4;
-	border: 50%;
+	color: white;
+	font-size: 2.7vw;
+	line-height: 7.8vw;
+	background: rgba(208, 32, 42, 0.39);
+	border-radius: 50%;
+	position: absolute;
+	margin: 19vh 47vw 0;
 	width: 8vw;
 	height: 8vw;
 }
 #pergunta .tarja{
-	margin-top: 34vh;
+	margin-top: 32vh;
 }
 #pergunta ul{
 	position: relative;
@@ -198,7 +204,6 @@ h3{
 	line-height: 7.7vh;
 }
 #pergunta ul>li::before{
-	content: "";
 	width: 11.9vw; 
 	height: 9.6vh;
 	position: absolute;
@@ -210,25 +215,36 @@ h3{
 #pergunta ul>li.checked::before{
 	background: white;
 	color: #5dc6ce;
-	opacity: 1;
 	line-height: 9.6vh;
+	opacity: 1;
+	-webkit-animation: select-effect 250ms 2;
+    -moz-animation: select-effect 250ms 2;
+    -ms-animation: select-effect 250ms 2;
+}
+@keyframes select-effect {
+	0%, 100% {
+	    opacity: 1;
+	}
+	50% {
+	    opacity: 0;
+	}
 }
 #pergunta ul>li:last-child{
 	border-right-width: 0.2vmax;
 }
-#pergunta ul>li:nth-child(0)::before{
+#pergunta ul>li:nth-child(1)::before{
 	content: "1";
 }
-#pergunta ul>li:nth-child(1)::before{
+#pergunta ul>li:nth-child(2)::before{
 	content: "2";
 }
-#pergunta ul>li:nth-child(2)::before{
+#pergunta ul>li:nth-child(3)::before{
 	content: "3";
 }
-#pergunta ul>li:nth-child(3)::before{
+#pergunta ul>li:nth-child(4)::before{
 	content: "4";
 }
-#pergunta ul>li:nth-child(4)::before{
+#pergunta ul>li:nth-child(5)::before{
 	content: "5";
 }
 #pergunta ul>li:first-child::after, 
@@ -275,4 +291,14 @@ h3{
     left: -7vw;
     transform: rotate(164.3deg);
     background: #d0202a;
+}
+#confirmar{
+	/*opacity: 1;*/
+	background-color: #829e1a;
+	margin-top: 36vh;
+}
+#pergunta[data-status-votacao="selected"] #confirmar{
+	/*opacity: 1;*/
+	margin-top: 6vh;
+	transition: margin-top 1s;
 }

@@ -1,6 +1,3 @@
-// QRCODE reader Copyright 2011 Lazar Laszlo
-// http://www.webqr.com
-
 var gCtx = null;
 var gCanvas = null;
 var c=0;
@@ -9,7 +6,14 @@ var gUM=false;
 var webkit=false;
 var moz=false;
 var v=null;
-
+var get = {
+    item: function(item, dom){
+        return typeof(dom)!="undefined"?dom.querySelector(item):document.querySelector(item);
+    },
+    all: function(itens, dom){
+        return typeof(dom)!="undefined"?dom.querySelectorAll(itens):document.querySelectorAll(itens);
+    }
+}
 
 var vidhtml = '<video id="video" autoplay></video>';
 
@@ -109,23 +113,40 @@ function error(error) {
     gUM=false;
     return;
 }
+function setEvents(){
+    var entrar = get.item("#entrar"),
+    iniciar = get.item("#fullscreen"),
+    respostas = get.all("#pergunta ul>li");
 
-function load()
-{
-    var entrar = document.getElementById("entrar"),
-    elem = document.getElementById("fullscreen");
-    elem.addEventListener('click',function(){ 
-        console.log("entrou");
-        document.querySelector(".step-captura[data-status='active']").dataset.status = "no-active";
-        document.querySelector("#instrucao-leitura").dataset.status = "active";
+    respostas.forEach(function(resposta){
+        resposta.addEventListener('click',function(){
+            if(this.className.toLowerCase().search('checked')==-1){
+                if(get.all("#pergunta ul>li.checked").length>0){
+                    get.item("#pergunta ul>li.checked").className = "";
+                } else {
+                    get.item("#pergunta").dataset.statusVotacao = "selected"
+                }
+                this.className = "checked";
+            } 
+        },false);
+    });
+
+    iniciar.addEventListener('click',function(){ 
+        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
+        get.item("#instrucao-leitura").dataset.status = "active";
     },false);
 
     entrar.addEventListener('click',function(){ 
-        document.querySelector("main>section[data-status='step-atual']").dataset.status = "no-active";
-        document.querySelector("#captura").dataset.status = "step-atual";
+        get.item("main>section[data-status='step-atual']").dataset.status = "no-active";
+        get.item("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));
         fullscren.open();
     },false);
+    
+}
+function load()
+{
+    setEvents();
 	if(isCanvasSupported() && window.File && window.FileReader)
 	{
 		initCanvas(800, 600);

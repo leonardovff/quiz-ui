@@ -88,6 +88,9 @@ function read(a)
         html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
     html+="valor: <b>"+htmlEntities(a)+"</b><br><br>";
     document.getElementById("result").innerHTML=html;
+    console.log(a);
+    get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+    get.item("#pergunta").dataset.status = "step-atual";
 }	
 
 function isCanvasSupported(){
@@ -137,7 +140,7 @@ function setEvents(){
     },false);
 
     entrar.addEventListener('click',function(){ 
-        get.item("main>section[data-status='step-atual']").dataset.status = "no-active";
+        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));
         fullscren.open();

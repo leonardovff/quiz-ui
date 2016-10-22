@@ -148,7 +148,7 @@ h3{
 	color: white;
 }
 #pergunta{
-	background: url("../img/logos.png") no-repeat center 91.1vh;
+	background: url("../img/logos.png") white no-repeat center 91.1vh;
 	background-size: 89% auto;
 }
 #pergunta::after{

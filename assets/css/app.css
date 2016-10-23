@@ -48,6 +48,81 @@ body, html{
 .step-captura[data-status="active"]{
 	display: block;
 }
+
+a#arrows {
+    transform: rotate(180deg);
+    width: 5.5vw;
+    height: 2.6vw;
+    position: absolute;
+    top: 8vh;
+    left: 70%;
+}
+
+a#arrows>div:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: white transparent transparent transparent;
+    -webkit-animation: pulseArrow 3s .3s infinite both;
+    animation: pulseArrow 3s .3s infinite both;
+}
+
+a#arrows>div:first-child:before {
+    top: 0;
+    -webkit-animation: pulseArrow 3s 0s infinite both;
+    animation: pulseArrow 3s 0s infinite both
+}
+
+a#arrows>div:last-child:before {
+    top: 50px;
+    -webkit-animation: pulseArrow 3s .6s infinite both;
+    animation: pulseArrow 3s .6s infinite both
+}
+
+
+@-webkit-keyframes pulseArrow {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-80%);
+        transform: translateY(-80%)
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@keyframes pulseArrow {
+    0% {
+        opacity: 0;
+        transform: translateY(-80%)
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0)
+    }
+}
+
+
 #instrucao-inicio{
 	top: 26.4%;
 	padding: 10vh 0vw;

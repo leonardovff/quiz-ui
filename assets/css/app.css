@@ -58,6 +58,7 @@ body, html{
     margin: 30vh auto 0;
     height: 45vw;
     width: 58vw;
+	padding: 0.1px;
 }
 #outdiv{
 	z-index: 49;
@@ -240,14 +241,28 @@ h3{
 	background: #4578a0;
 }
 #hash_pw{
-	margin-top: 14.2vh;
 	height: 4.4vh;
 	width:  32vw;
 	margin-left: 4.4vw;
-	background-color: transparent;
+	background-color: #eed03e;
 	padding: 1vh 2vw;
 	color: white;
 	font-size: 2vmax;
+}
+#login div label{
+	display: inline-block;
+	background-color: #e97100;
+	margin-top: 14.2vh;
+	position: relative;
+}
+#login div label::before{
+	content: "";
+	position: absolute;
+	left: 0;
+	height: 100%;
+	width: 8vw;
+	background: url("../img/login_symbol.png") #e97100 no-repeat center center;
+	background-size: contain;
 }
 #hash_pw::-webkit-input-placeholder{
 	color: white;
@@ -256,7 +271,7 @@ h3{
 #entrar{
 	font-weight: lighter;    
 	font-size: 2.5vw;
-	margin-top:  2vh;
+	margin-top:  1.1vh;
     color: white;
     background-color: #e97100;
     padding: 1vh 3vw;

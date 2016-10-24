@@ -48,6 +48,9 @@ body, html{
 	right:0;
 	transition: 2s;
 }
+#login{
+	background: url('assets/img/f_login.png') no-repeat left top;
+}
 #outdiv{
 	z-index: 49;
  	top: 0;

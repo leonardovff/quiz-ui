@@ -44,14 +44,15 @@ function captureToCanvas() {
                 console.log(e,e.indexOf("found 0"));
                 if(e.indexOf("found 0") === -1){
                     if(limparFeedback === null){
+                        console.log("entrou");
                         get.item("#result").innerHTML="- escaneando -";
                     } else {
                         clearInterval(limparFeedback);
                     }
-                    limparFeedback = setTimeout(function(){
-                        limparFeedback = null;
-                        get.item("#result").innerHTML="";    
-                    }, 500);
+                    // limparFeedback = setTimeout(function(){
+                    //     limparFeedback = null;
+                    //     get.item("#result").innerHTML="";    
+                    // }, 500);
 
                 }
                 setTimeout(captureToCanvas, 500);

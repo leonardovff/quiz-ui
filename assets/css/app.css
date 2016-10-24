@@ -17,7 +17,6 @@
 body, html{
     text-align:center;
     width:100%;
-    background: black;
     height: 100%;
 }
 #todo{
@@ -182,6 +181,7 @@ h3{
 #result{
 	position: absolute;
 	top:47%;
+	z-index: 51;
 	color: white;
 	font-size: 5vw;
 	padding:20px;

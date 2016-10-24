@@ -13,7 +13,8 @@ var get = {
     all: function(itens, dom){
         return typeof(dom)!="undefined"?dom.querySelectorAll(itens):document.querySelectorAll(itens);
     }
-}
+},
+limparFeedback = null;
 
 var vidhtml = '<video id="video" autoplay></video>';
 
@@ -41,6 +42,18 @@ function captureToCanvas() {
             }
             catch(e){       
                 console.log(e);
+                if(e.indexOf("found 0") !== -1){
+                    if(limparFeedback === null){
+                        get.item("#result").innerHTML="- escaneando -";
+                    } else {
+                        clearInterval(limparFeedback);
+                    }
+                    limparFeedback = setTimeout(function(){
+                        limparFeedback = null;
+                        get.item("#result").innerHTML="";    
+                    }, 200);
+
+                }
                 setTimeout(captureToCanvas, 500);
             };
         }
@@ -84,14 +97,12 @@ function htmlEntities(str) {
 function read(a)
 {
     var html="<br>";
-    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
-        html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
     html+="valor: <b>"+htmlEntities(a)+"</b><br><br>";
     document.getElementById("result").innerHTML=html;
     console.log(a);
     get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
     get.item("#pergunta").dataset.status = "step-atual";
-}	
+}   
 
 function isCanvasSupported(){
   var elem = document.createElement('canvas');
@@ -111,7 +122,7 @@ function success(stream) {
     gUM=true;
     setTimeout(captureToCanvas, 500);
 }
-		
+        
 function error(error) {
     gUM=false;
     return;
@@ -150,55 +161,54 @@ function setEvents(){
 function load()
 {
     setEvents();
-	if(isCanvasSupported() && window.File && window.FileReader)
-	{
-		initCanvas(800, 600);
-		qrcode.callback = read;
-		//document.getElementById("mainbody").style.display="inline";
+    if(isCanvasSupported() && window.File && window.FileReader)
+    {
+        initCanvas(800, 600);
+        qrcode.callback = read;
+        //document.getElementById("mainbody").style.display="inline";
         setwebcam();
-	}
-	else
-	{
-		//document.getElementById("mainbody").style.display="inline";
-		document.getElementById("outdiv").innerHTML='<p id="mp1">QR code scanner for HTML5 capable browsers</p><br>'+
+    }
+    else
+    {
+        //document.getElementById("mainbody").style.display="inline";
+        document.getElementById("outdiv").innerHTML='<p id="mp1">QR code scanner for HTML5 capable browsers</p><br>'+
         '<br><p id="mp2">sorry your browser is not supported</p><br><br>'+
         '<p id="mp1">try <a href="http://www.mozilla.com/firefox"><img src="firefox.png"/></a> or <a href="http://chrome.google.com"><img src="chrome_logo.gif"/></a> or <a href="http://www.opera.com"><img src="Opera-logo.png"/></a></p>';
-	}
+    }
 }
 
 function setwebcam()
 {
-	
-	var options = true;
-	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
-	{
-		try{
-			navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-			  devices.forEach(function(device) {
-				if (device.kind === 'videoinput') {
-				  if(device.label.toLowerCase().search("front") >-1)
-					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
-				}
-				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
-			  });
-			  setwebcam2(options);
-			});
-		}
-		catch(e)
-		{
-			console.log(e);
-		}
-	}
-	else{
-		console.log("no navigator.mediaDevices.enumerateDevices" );
-		setwebcam2(options);
-	}
-	
+    
+    var options = true;
+    if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
+    {
+        try{
+            navigator.mediaDevices.enumerateDevices()
+            .then(function(devices) {
+              devices.forEach(function(device) {
+                if (device.kind === 'videoinput') {
+                  if(device.label.toLowerCase().search("front") >-1)
+                    options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
+                }
+                console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
+              });
+              setwebcam2(options);
+            });
+        }
+        catch(e)
+        {
+            console.log(e);
+        }
+    }
+    else{
+        console.log("no navigator.mediaDevices.enumerateDevices" );
+        setwebcam2(options);
+    }
+    
 }
 function setwebcam2(options)
 {
-    document.getElementById("result").innerHTML="- escaneando -";
     if(stype==1)
     {
         setTimeout(captureToCanvas, 500);    

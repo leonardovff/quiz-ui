@@ -61,9 +61,9 @@ body, html{
 	padding: 0.1px;
 }
 #outdiv{
-	z-index: 49;
  	top: 0;
   	left: 0;
+  	    background: red;
 }
 #video{
     width:100%;

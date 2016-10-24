@@ -48,7 +48,10 @@ body, html{
 	transition: 2s;
 }
 #login{
-	background: url('assets/img/f_login.png') no-repeat left top;
+	background: url('../img/f_login.png') no-repeat left top;
+}
+#login div{
+	margin-top: 30vh;
 }
 #outdiv{
 	z-index: 49;
@@ -230,8 +233,29 @@ h3{
 	padding: 2vh 15vw;
 	background: #4578a0;
 }
+#hash_pw{
+	margin-top: 14.2vh;
+	height: 4.4vh;
+	width:  32vw;
+	margin-left: 4.4vw;
+	background-color: transparent;
+	padding: 1vh 2vw;
+	color: white;
+	font-size: 2vmax;
+}
+#hash_pw::-webkit-input-placeholder{
+	color: white;
+	font-family: "Futura Bold";
+}
 #entrar{
-	font-size: 15vw;
+	font-weight: lighter;    
+	font-size: 2.5vw;
+	margin-top:  2vh;
+    color: white;
+    background-color: #e97100;
+    padding: 1vh 3vw;
+    font-family: "Futura Bold";
+    text-transform: uppercase;
 }
 .tarja{
 	text-transform: uppercase;

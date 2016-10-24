@@ -241,7 +241,7 @@ h3{
 	background: #4578a0;
 }
 #hash_pw{
-	height: 4.4vh;
+	height: 6vw;
 	width:  32vw;
 	margin-left: 4.4vw;
 	background-color: #eed03e;
@@ -252,7 +252,7 @@ h3{
 #login div label{
 	display: inline-block;
 	background-color: #e97100;
-	margin-top: 14.2vh;
+	margin-top: 17vw;
 	position: relative;
 }
 #login div label::before{

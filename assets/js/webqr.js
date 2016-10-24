@@ -41,8 +41,8 @@ function captureToCanvas() {
                 qrcode.decode();
             }
             catch(e){       
-                console.log(e);
-                if(e.indexOf("found 0") !== -1){
+                console.log(e,e.indexOf("found 0"));
+                if(e.indexOf("found 0") === -1){
                     if(limparFeedback === null){
                         get.item("#result").innerHTML="- escaneando -";
                     } else {
@@ -51,7 +51,7 @@ function captureToCanvas() {
                     limparFeedback = setTimeout(function(){
                         limparFeedback = null;
                         get.item("#result").innerHTML="";    
-                    }, 200);
+                    }, 500);
 
                 }
                 setTimeout(captureToCanvas, 500);
@@ -98,7 +98,7 @@ function read(a)
 {
     var html="<br>";
     html+="valor: <b>"+htmlEntities(a)+"</b><br><br>";
-    document.getElementById("result").innerHTML=html;
+    // document.getElementById("result").innerHTML=html;
     console.log(a);
     get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
     get.item("#pergunta").dataset.status = "step-atual";

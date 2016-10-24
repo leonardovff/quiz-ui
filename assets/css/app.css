@@ -52,7 +52,12 @@ body, html{
 	background-size: cover;
 }
 #login div{
+	background: url(../img/f_caixa_login.png) no-repeat left top;
 	margin-top: 30vh;
+    background-size: cover;
+    margin: 30vh auto 0;
+    height: 45vw;
+    width: 58vw;
 }
 #outdiv{
 	z-index: 49;

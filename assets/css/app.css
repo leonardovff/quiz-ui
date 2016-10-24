@@ -16,6 +16,7 @@
 }
 body, html{
     text-align:center;
+    background: black;
     width:100%;
     height: 100%;
 }
@@ -49,39 +50,39 @@ body, html{
 	display: block;
 }
 
-a#arrows {
+div#arrows {
     transform: rotate(180deg);
-    width: 5.5vw;
-    height: 2.6vw;
+    width: 6vw;
+    height: 8vh;
     position: absolute;
-    top: 8vh;
-    left: 70%;
+    top: 1.8vh;
+    left: 60.2vw;
 }
 
-a#arrows>div:before {
+div#arrows>div::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 25px;
+    top: 3vh;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 15px 15px 0 15px;
+    border-width: 3.5vw 4.2vw 0 4.2vw;
     border-color: white transparent transparent transparent;
-    -webkit-animation: pulseArrow 3s .3s infinite both;
-    animation: pulseArrow 3s .3s infinite both;
+    -webkit-animation: pulseArrow 2.5s .5s infinite both;
+    animation: pulseArrow 2.5s .5s infinite both;
 }
 
-a#arrows>div:first-child:before {
+div#arrows>div:first-child::before {
     top: 0;
-    -webkit-animation: pulseArrow 3s 0s infinite both;
-    animation: pulseArrow 3s 0s infinite both
+    -webkit-animation: pulseArrow 2.5s 0s infinite both;
+    animation: pulseArrow 2.5s 0s infinite both;
 }
 
-a#arrows>div:last-child:before {
-    top: 50px;
-    -webkit-animation: pulseArrow 3s .6s infinite both;
-    animation: pulseArrow 3s .6s infinite both
+div#arrows>div:last-child::before {
+    top: 6vh;
+    -webkit-animation: pulseArrow 2.5s .5s infinite both;
+    animation: pulseArrow 2.5s .5s infinite both;
 }
 
 
@@ -163,9 +164,9 @@ h3{
  
 #result{
 	position: absolute;
-	top:50%;
+	top:47%;
 	color: white;
-	font-size: 6vw;
+	font-size: 5vw;
 	padding:20px;
 	width:100%;
 }

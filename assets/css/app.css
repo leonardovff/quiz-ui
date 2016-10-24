@@ -49,7 +49,7 @@ body, html{
 }
 #login{
 	background: url('../img/f_login.png') no-repeat left top;
-	background-size: 100%;
+	background-size: cover;
 }
 #login div{
 	margin-top: 30vh;

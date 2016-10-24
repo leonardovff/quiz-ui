@@ -130,7 +130,8 @@ function error(error) {
 function setEvents(){
     var entrar = get.item("#entrar"),
     iniciar = get.item("#fullscreen"),
-    respostas = get.all("#pergunta ul>li");
+    respostas = get.all("#pergunta ul>li"),
+    responder = get.item("#confirmar");
 
     respostas.forEach(function(resposta){
         resposta.addEventListener('click',function(){
@@ -155,6 +156,10 @@ function setEvents(){
         get.item("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));
         fullscren.open();
+    },false);
+    
+    responder.addEventListener('click',function(){ 
+        get.item("#pergunta").dataset.statusVotacao = "obrigado";
     },false);
     
 }

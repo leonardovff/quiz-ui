@@ -49,6 +49,7 @@ body, html{
 }
 #login{
 	background: url('../img/f_login.png') no-repeat left top;
+	background-size: 100%;
 }
 #login div{
 	margin-top: 30vh;

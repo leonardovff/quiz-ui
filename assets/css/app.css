@@ -44,7 +44,7 @@ body, html{
 #todo>section[data-status="step-atual"]{
     opacity: 1;
 	z-index: 51;
-	right:0;
+	right:0x;
 	transition: 2s;
 }
 #login{
@@ -63,7 +63,6 @@ body, html{
 #outdiv{
  	top: 0;
   	left: 0;
-  	    background: red;
 }
 #video{
     width:100%;

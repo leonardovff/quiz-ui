@@ -168,6 +168,7 @@ function setEvents(){
 }
 function load()
 {
+    alert("entrou");
     setEvents();
     if(isCanvasSupported() && window.File && window.FileReader)
     {

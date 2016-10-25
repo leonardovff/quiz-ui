@@ -151,10 +151,10 @@ function setEvents(){
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
         get.item("#instrucao-leitura").dataset.status = "active";
     },false);
-    alert(entrar);
-    alert(typeof(entrar));
+    // alert(entrar);
+    // alert(typeof(entrar));
     entrar.addEventListener('click',function(){
-        alert("entrou"); 
+        // alert("entrou"); 
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));

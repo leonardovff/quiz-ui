@@ -170,8 +170,12 @@ h2{
 }
 h3{
 	padding:0 5.9vw;
-	font-size: 4.3vw;
+	font-size: 4.0vw;
 }
+#instrucao-leitura .instrucoes{
+	padding: 2.3vh;
+}
+
 #inserir-manualmente{
 	left: 2.5%;
 	position: absolute;

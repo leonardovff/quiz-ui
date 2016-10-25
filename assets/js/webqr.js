@@ -128,43 +128,9 @@ function error(error) {
     gUM=false;
     return;
 }
-function setEvents(){
-    var entrar = get.item("#entrar"),
-    iniciar = get.item("#fullscreen"),
-    respostas = get.all("#pergunta ul>li"),
-    responder = get.item("#confirmar");
-    for (var i = 0; i < respostas.length; i++) {
-        respostas[i].addEventListener('click',function(){
-            if(this.className.toLowerCase().search('checked')==-1){
-                if(get.all("#pergunta ul>li.checked").length>0){
-                    get.item("#pergunta ul>li.checked").className = "";
-                } else {
-                    get.item("#pergunta").dataset.statusVotacao = "selected"
-                }
-                this.className = "checked";
-            } 
-        },false);
-    }
-
-    iniciar.addEventListener('click',function(){ 
-        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
-        get.item("#instrucao-leitura").dataset.status = "active";
-    },false);
-    entrar.addEventListener('click',function(){
-        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
-        get.item("#captura").dataset.status = "step-atual";
-        var fullscren = controlFullScreen(document.querySelector('body'));
-        fullscren.open();
-    },false);
-    
-    responder.addEventListener('click',function(){ 
-        get.item("#pergunta").dataset.statusVotacao = "obrigado";
-    },false);
-    
-}
 function load()
 {
-    setEvents();
+    initApp();
     if(isCanvasSupported() && window.File && window.FileReader)
     {
         initCanvas(800, 600);

@@ -93,7 +93,7 @@ div#arrows>div::before {
     height: 0;
     border-style: solid;
     border-width: 3.5vw 4.2vw 0 4.2vw;
-    border-color: white transparent transparent transparent;
+    border-color: #fef7f7 transparent transparent transparent;
     -webkit-animation: pulseArrow 2.5s .5s infinite both;
     animation: pulseArrow 2.5s .5s infinite both;
 }
@@ -154,7 +154,7 @@ div#arrows>div:last-child::before {
 	padding: 10vh 0vw;
 }
 #instrucao-leitura .instrucoes{
-	top:11%;
+	top:13%;
 }
 .instrucoes{
 	margin: 0 2vw;

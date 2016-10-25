@@ -168,10 +168,10 @@ function setEvents(){
 }
 function load()
 {
-    alert("entrou");
     setEvents();
     if(isCanvasSupported() && window.File && window.FileReader)
     {
+        alert("entrou");
         initCanvas(800, 600);
         qrcode.callback = read;
         //document.getElementById("mainbody").style.display="inline";

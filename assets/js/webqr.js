@@ -91,8 +91,14 @@ function error(error) {
     gUM=false;
     return;
 }
+function validarCodigo(codigo){
+    if((codigo.length != 14) || parseInt(codigo)){
+        return false;
+    } 
+}
 function load()
 {
+    console.log(validarCodigo("01009200005805"));
     initApp();
     if(isCanvasSupported() && window.File && window.FileReader)
     {

@@ -10,7 +10,15 @@ var app = {
             } 
             alert("Hash incorreto!");
         },false);      
+    },
+    resultadoLeitura: function(a){
+        htmlEntities(a);
+        console.log(a);
+        app.initVotacao(a);
+        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+        get.item("#pergunta").dataset.status = "step-atual";
     }
+
 }
 var controlFullScreen = function (el){
     return {

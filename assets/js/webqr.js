@@ -64,46 +64,10 @@ function captureToCanvas() {
         };
     }
 }
-var controlFullScreen = function (el){
-    return {
-        open: function(){
-            if (el.requestFullscreen) {
-              el.requestFullscreen();
-            } else if (el.msRequestFullscreen) {
-              el.msRequestFullscreen();
-            } else if (el.mozRequestFullScreen) {
-              el.mozRequestFullScreen();
-            } else if (el.webkitRequestFullscreen) {
-              el.webkitRequestFullscreen();
-            }
-        },
-        close: function(){
-            if (el.exitFullscreen) {
-              el.exitFullscreen();
-            } else if (el.msExitFullscreen) {
-              el.msExitFullscreen();
-            } else if (el.mozExitFullscreen) {
-              el.mozExitFullscreen();
-            } else if (el.webkitExitFullscreen) {
-              el.webkitExitFullscreen();
-            } 
-        }
-    }
-}
-   
+
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-
-function read(a)
-{
-    var html="<br>";
-    html+="valor: <b>"+htmlEntities(a)+"</b><br><br>";
-    // document.getElementById("result").innerHTML=html;
-    console.log(a);
-    get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
-    get.item("#pergunta").dataset.status = "step-atual";
-}   
 
 function isCanvasSupported(){
   var elem = document.createElement('canvas');
@@ -134,7 +98,7 @@ function load()
     if(isCanvasSupported() && window.File && window.FileReader)
     {
         initCanvas(800, 600);
-        qrcode.callback = read;
+        qrcode.callback = app.resultadoLeitura;
         //document.getElementById("mainbody").style.display="inline";
         setwebcam();
     }

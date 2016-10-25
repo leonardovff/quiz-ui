@@ -48,7 +48,7 @@ function captureToCanvas() {
                     } else {
                         clearInterval(limparFeedback);
                     }
-                    lfimparFeedback = setTimeout(function(){
+                    limparFeedback = setTimeout(function(){
                         limparFeedback = null;
                         get.item("#result").innerHTML="";    
                     }, 500);

@@ -30,14 +30,14 @@ var validarCodigo = (function(){
         if((codigo.length != 14) || parseInt(codigo)<=0){
             return false;
         } 
-        'VERIFICA SE O DIGITO VERIFICADOR ESTA CORRETO'
+        //VERIFICA SE O DIGITO VERIFICADOR ESTA CORRETO
         if(parseInt(calculaVerificador(codigo.substring(0,12)))
         != parseInt(codigo.substring(12,14))){
             return false;
         }
         return true;
     }
-})
+}())
 var app = {
     setEvents: function(){
         get.item("#entrar").addEventListener('click',function(){
@@ -59,7 +59,19 @@ var app = {
     },
     resultadoLeitura: function(a){
         a = htmlEntities(a);
+
         if(!validarCodigo(a)){ //validação do token
+            
+            erro = "Código inválido";
+            if(limparFeedback === null){
+                get.item("#result").innerHTML=erro;
+            } else {
+                clearInterval(limparFeedback);
+            }
+            limparFeedback = setTimeout(function(){
+                limparFeedback = null;
+                get.item("#result").innerHTML="";    
+            }, 500);
             return setTimeout(captureToCanvas, 500);
         }
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";

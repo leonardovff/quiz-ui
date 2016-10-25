@@ -9,10 +9,19 @@ var app = {
                 return fullscren.open();
             } 
             alert("Hash incorreto!");
-        },false);      
+        },false);    
+
+        get.item("#iniciar").addEventListener('click',function(){ 
+            get.item(".step-captura[data-status='active']").dataset.status = "no-active";
+            get.item("#instrucao-leitura").dataset.status = "active";
+            setTimeout(captureToCanvas, 500); 
+        },false);  
     },
     resultadoLeitura: function(a){
-        htmlEntities(a);
+        a = htmlEntities(a);
+        if(a!=""){ //validação do token
+            return setTimeout(captureToCanvas, 500);
+        }
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";
     }
@@ -59,12 +68,6 @@ function initApp(){
             } 
         },false);
     }
-
-    get.item("#fullscreen").addEventListener('click',function(){ 
-        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
-        get.item("#instrucao-leitura").dataset.status = "active";
-    },false);
-   
     get.item("#confirmar").addEventListener('click',function(){ 
         get.item("#pergunta").dataset.statusVotacao = "obrigado";
     },false);

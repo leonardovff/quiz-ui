@@ -133,7 +133,7 @@ function setEvents(){
     iniciar = get.item("#fullscreen"),
     respostas = get.all("#pergunta ul>li"),
     responder = get.item("#confirmar");
-
+    alert("Entrou");
     respostas.forEach(function(resposta){
         resposta.addEventListener('click',function(){
             if(this.className.toLowerCase().search('checked')==-1){
@@ -168,8 +168,8 @@ function setEvents(){
 }
 function load()
 {
+    alert("entrou");
     setEvents();
-        alert("entrou");
     if(isCanvasSupported() && window.File && window.FileReader)
     {
         initCanvas(800, 600);

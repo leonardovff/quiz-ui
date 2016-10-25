@@ -49,10 +49,10 @@ function captureToCanvas() {
                     } else {
                         clearInterval(limparFeedback);
                     }
-                    // limparFeedback = setTimeout(function(){
-                    //     limparFeedback = null;
-                    //     get.item("#result").innerHTML="";    
-                    // }, 500);
+                    lfimparFeedback = setTimeout(function(){
+                        limparFeedback = null;
+                        get.item("#result").innerHTML="";    
+                    }, 500);
 
                 }
                 setTimeout(captureToCanvas, 500);
@@ -151,8 +151,10 @@ function setEvents(){
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
         get.item("#instrucao-leitura").dataset.status = "active";
     },false);
-
-    entrar.addEventListener('click',function(){ 
+    alert(entrar);
+    alert(typeof(entrar));
+    entrar.addEventListener('click',function(){
+        alert("entrou"); 
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));

@@ -4,7 +4,7 @@ var app = {
             if(get.item("#hash_pw").value==="123"){
                 get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
                 get.item("#captura").dataset.status = "step-atual";
-                return true;
+                // return true;
                 var fullscren = controlFullScreen(document.querySelector('body'));
                 return fullscren.open();
             } 
@@ -13,8 +13,6 @@ var app = {
     },
     resultadoLeitura: function(a){
         htmlEntities(a);
-        console.log(a);
-        app.initVotacao(a);
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";
     }

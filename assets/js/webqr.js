@@ -133,8 +133,8 @@ function setEvents(){
     iniciar = get.item("#fullscreen"),
     respostas = get.all("#pergunta ul>li"),
     responder = get.item("#confirmar");
-    respostas.forEach(function(resposta){
-        resposta.addEventListener('click',function(){
+    for (var i = 0; i < respostas.length; i++) {
+        respostas[i].addEventListener('click',function(){
             if(this.className.toLowerCase().search('checked')==-1){
                 if(get.all("#pergunta ul>li.checked").length>0){
                     get.item("#pergunta ul>li.checked").className = "";
@@ -144,17 +144,13 @@ function setEvents(){
                 this.className = "checked";
             } 
         },false);
-    });
+    }
 
-    alert("Entrou");
     iniciar.addEventListener('click',function(){ 
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
         get.item("#instrucao-leitura").dataset.status = "active";
     },false);
-    alert(entrar);
-    alert(typeof(entrar));
     entrar.addEventListener('click',function(){
-        alert("entrou"); 
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
         var fullscren = controlFullScreen(document.querySelector('body'));
@@ -168,7 +164,6 @@ function setEvents(){
 }
 function load()
 {
-    alert("entrou");
     setEvents();
     if(isCanvasSupported() && window.File && window.FileReader)
     {
@@ -195,13 +190,13 @@ function setwebcam()
         try{
             navigator.mediaDevices.enumerateDevices()
             .then(function(devices) {
-              devices.forEach(function(device) {
-                if (device.kind === 'videoinput') {
-                  if(device.label.toLowerCase().search("front") >-1)
-                    options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
+                for (var i = devices.length - 1; i >= 0; i--) {
+                    if (devices[i].kind === 'videoinput') {
+                      if(devices[i].label.toLowerCase().search("front") >-1)
+                        options={'deviceId': {'exact':devices[i].deviceId}, 'facingMode':'environment'} ;
+                    }
+                    console.log(devices[i].kind + ": " + devices[i].label +" id = " + devices[i].deviceId);
                 }
-                console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
-              });
               setwebcam2(options);
             });
         }

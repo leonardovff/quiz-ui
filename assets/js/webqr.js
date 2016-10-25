@@ -133,7 +133,6 @@ function setEvents(){
     iniciar = get.item("#fullscreen"),
     respostas = get.all("#pergunta ul>li"),
     responder = get.item("#confirmar");
-    alert("Entrou");
     respostas.forEach(function(resposta){
         resposta.addEventListener('click',function(){
             if(this.className.toLowerCase().search('checked')==-1){
@@ -147,6 +146,7 @@ function setEvents(){
         },false);
     });
 
+    alert("Entrou");
     iniciar.addEventListener('click',function(){ 
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
         get.item("#instrucao-leitura").dataset.status = "active";

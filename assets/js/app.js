@@ -1,61 +1,35 @@
-var validarCodigo = (function(){
-    function calculaVerificador(codigo){
-        var digito = 1,
-        somatorio = null,
-        fator = null,
-        numeroEncontrado;
-        retorno = "";
-        while (digito < 3){
-            somatorio = 0;
-            for (var contador = 1; contador < 13; contador++) {
-                if(digito == 1){
-                    fator = contador;
-                } else {
-                    fator = 13 - contador;
-                }
-                somatorio += fator * parseInt(codigo.substring(contador-1,contador))
-            }
-            //CALCULA O DIGITO VERIFICADOR COMO A
-            //DISTANCIA ENTRE SOMATORIO E O PROXIMO MULTIPLO DE 10
-            numeroEncontrado = 10 - (somatorio % 10)
-            if(numeroEncontrado == 10){
-                numeroEncontrado = 0
-            }
-            retorno += "" + numeroEncontrado;
-            digito += 1;
-        }
-        return retorno;
-    }
-    return function(codigo){
-        if((codigo.length != 14) || parseInt(codigo)<=0){
-            return false;
-        } 
-        'VERIFICA SE O DIGITO VERIFICADOR ESTA CORRETO'
-        if(parseInt(calculaVerificador(codigo.substring(0,12)))
-        != parseInt(codigo.substring(12,14))){
-            return false;
-        }
-        return true;
-    }
-})
 var app = {
+    ambientes: ["http://localhost/sgo/"],
+    ambiente: 0,
+    debugger: true,
     setEvents: function(){
         get.item("#entrar").addEventListener('click',function(){
-            if(get.item("#hash_pw").value==="123"){
+            if(get.item("#hash_pw").value!=="123"){
+                return alert("Hash incorreto!");   
+            } 
+            questionario.getPerguntas(function(flag){
+                questionario.renderize();
+                if(!flag){
+                    return alert("Não foi possivel capturar as questões");
+                } 
                 get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
                 get.item("#captura").dataset.status = "step-atual";
-                // return true;
+                if(app.debugger)
+                    return true;
                 var fullscren = controlFullScreen(document.querySelector('body'));
                 return fullscren.open();
-            } 
-            alert("Hash incorreto!");
+            });
         },false);    
 
         get.item("#iniciar").addEventListener('click',function(){ 
             get.item(".step-captura[data-status='active']").dataset.status = "no-active";
             get.item("#instrucao-leitura").dataset.status = "active";
-            setTimeout(captureToCanvas, 500); 
+            setTimeout(captureToCanvas, 500);
         },false);  
+
+        get.item("#confirmar").addEventListener('click',function(){ 
+           questionario.next();
+        },false);
     },
     resultadoLeitura: function(a){
         a = htmlEntities(a);
@@ -64,7 +38,7 @@ var app = {
         }
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";
-    }
+    }, 
 
 }
 var controlFullScreen = function (el){
@@ -108,8 +82,9 @@ function initApp(){
             } 
         },false);
     }
-    get.item("#confirmar").addEventListener('click',function(){ 
-        get.item("#pergunta").dataset.statusVotacao = "obrigado";
-    },false);
-    
 }
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};

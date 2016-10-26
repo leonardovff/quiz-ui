@@ -7,7 +7,9 @@
   <meta name="robots" content="no-index, no-follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema de Votação de Visitantes</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/app.css"> 
+  <link rel="stylesheet" type="text/css" href="assets/css/seta.css"> 
+  <link rel="stylesheet" type="text/css" href="assets/css/questionario.css">
 </head>
 
 <body>
@@ -57,11 +59,11 @@
     <div class="tarja" id="questao">
       <h3>Você gostou do projeto e o recomendaria a um amigo?</h3>
       <ul>
-        <li><span>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
+        <li data-value="1"><span>1</li>
+        <li data-value="2">2</li>
+        <li data-value="3">3</li>
+        <li data-value="4">4</li>
+        <li data-value="5">5</li>
       </ul>
     </div>
     <button class="btn-go" type="button" id="confirmar">CONFIRMAR</button>
@@ -72,9 +74,11 @@
   </section>
 </div>
 <script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/js/validatorCodigo.js"></script>
+<script type="text/javascript" src="assets/js/questionario.js"></script>
 <script type="text/javascript" src="assets/js/llqrcode.js"></script>
 <script type="text/javascript" src="assets/js/webqr.js"></script>
-<!-- <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script> -->
+<script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
 <!-- <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script> -->
 <script type="text/javascript">load();</script>
 </body>

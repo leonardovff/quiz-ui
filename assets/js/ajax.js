@@ -1,6 +1,6 @@
 var ajax = {
     filaSend: null,
-    tempoEnvioBackground: 10000,
+    tempoEnvioBackground: 2000,
     salvarFila: function(fila){
     	if(typeof(fila)=="undefined") {
     		fila = ajax.filaSend;
@@ -51,7 +51,7 @@ var ajax = {
             success: function(response){
                 // questionario.perguntas = response.questoes;
                 // questionario.total = response.questoes.length;
-                callback(true);
+                callback(response.inserido);
             },
             error: function(){
                 callback(false);
@@ -64,7 +64,7 @@ var ajax = {
     	if(ajax.filaSend.length>0){
 	    	return ajax.sendRespostas(ajax.filaSend[0], function(flag){
 	    		if(flag){
-	    			ajax.filaSend[0].remove(0,0);
+	    			ajax.filaSend.remove(0,0);
 	    		} 
 	    		setTimeout(ajax.envioEmBackground,  ajax.tempoEnvioBackground);
 	    	});

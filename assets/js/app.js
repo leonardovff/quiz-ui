@@ -33,7 +33,19 @@ var app = {
     },
     resultadoLeitura: function(a){
         a = htmlEntities(a);
+
         if(!validarCodigo(a)){ //validação do token
+            
+            erro = "Código inválido";
+            if(limparFeedback === null){
+                get.item("#result").innerHTML=erro;
+            } else {
+                clearInterval(limparFeedback);
+            }
+            limparFeedback = setTimeout(function(){
+                limparFeedback = null;
+                get.item("#result").innerHTML="";    
+            }, 500);
             return setTimeout(captureToCanvas, 500);
         }
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";

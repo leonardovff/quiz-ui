@@ -36,13 +36,19 @@ var questionario = {
     	// console.log(questionario.indice + 1, questionario.total);
     	if(questionario.indice + 1 >= questionario.total) {
     		//acabou as questões
-			return get.item("#pergunta").dataset.statusVotacao = "obrigado";
+            return questionario.destroy();
     	}
     	questionario.indice += 1;
     	questionario.renderize();
     },
     destroy: function(){
-
+        get.item("#pergunta").dataset.statusVotacao = "obrigado";      
+        setTimeout(function(){
+            console.log("entrou");
+            app.initCapturaCodigo();
+            get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+            get.item("#captura").dataset.status = "step-atual";
+        }, app.tempoObrigado*1000)
     },
     start: function(){
     	questionario.indice = 0;

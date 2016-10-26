@@ -5,15 +5,14 @@ var app = {
     codigo: null,
     regional: 'AL',
     COD_Ocupacao: 76,
+    tempoObrigado: 2, // em segudos
     setEvents: function(){
         get.item("#entrar").addEventListener('click',function(){
             app.init();
         },false);    
 
         get.item("#iniciar").addEventListener('click',function(){ 
-            get.item(".step-captura[data-status='active']").dataset.status = "no-active";
-            get.item("#instrucao-leitura").dataset.status = "active";
-            setTimeout(captureToCanvas, 500);
+            app.initCapturaCodigo();
         },false);  
 
         get.item("#confirmar").addEventListener('click',function(){ 
@@ -30,6 +29,11 @@ var app = {
             }
         });
 
+    },
+    initCapturaCodigo: function(){
+        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
+        get.item("#instrucao-leitura").dataset.status = "active";
+        setTimeout(captureToCanvas, 500);
     },
     init: function(callback){
         if(get.item("#hash_pw").value!=="123"){
@@ -71,11 +75,17 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    testar();
+    // testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";
     app.init(function(){
-        app.resultadoLeitura("95012300000338")
+        app.resultadoLeitura("95012300000338");
+        setTimeout(function(){
+            for (var i = 0; i < 5; i++) {
+                get.item("#questao>ul>li:first-child").className = "alternativas checked";
+                questionario.next();
+            }
+        }, 2000);
     });
 }

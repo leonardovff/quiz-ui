@@ -71,17 +71,18 @@ var app = {
     }, 
 
 }
-function initApp(){
+function ini tApp(){
     app.setEvents();
     // testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";
     app.init(function(){
-        app.codigo = "95012300000338";
-        questionario.reset();  
-        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
-        get.item("#pergunta").dataset.status = "step-atual";
+        app.resultadoLeitura("95012300000338")
+        // app.codigo = "95012300000338";
+        // questionario.reset();  
+        // get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+        // get.item("#pergunta").dataset.status = "step-atual";
     });
 
 }

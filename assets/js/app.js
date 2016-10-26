@@ -1,5 +1,5 @@
 var app = {
-    ambientes: ["http://localhost/sgo/"],
+    ambientes: ["http://10.83.3.192/sgo/"],
     ambiente: 0,
     debugger: true,
     setEvents: function(){

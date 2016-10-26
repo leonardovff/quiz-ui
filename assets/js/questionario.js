@@ -47,7 +47,7 @@ var questionario = {
     	console.log(questionario.indice + 1, questionario.total);
     	if(questionario.indice + 1 >= questionario.total) {
     		//acabou as questões
-    		respostas.push({
+    		questionario.respostas.push({
     			codigo: 95012300000338, 
     			respostas: questionario.respostasAtual,
     			regional: 'AL',

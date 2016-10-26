@@ -65,24 +65,17 @@ var app = {
             return setTimeout(captureToCanvas, 500);
         }
         app.codigo = a;
-        questionario.reset();
-        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
-        get.item("#pergunta").dataset.status = "step-atual";
+        questionario.start();
     }, 
 
 }
 function initApp(){
     app.setEvents();
-    // testar();
+    testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";
     app.init(function(){
         app.resultadoLeitura("95012300000338")
-        // app.codigo = "95012300000338";
-        // questionario.reset();  
-        // get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
-        // get.item("#pergunta").dataset.status = "step-atual";
     });
-
 }

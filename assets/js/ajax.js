@@ -1,6 +1,6 @@
 var ajax = {
     filaSend: null,
-    tempoEnvioBackground: 2000,
+    tempoEnvioBackground: 5000,
     salvarFila: function(fila){
     	if(typeof(fila)=="undefined") {
     		fila = ajax.filaSend;
@@ -33,15 +33,16 @@ var ajax = {
                 callback(false);
             }
         }).then(function(){
-            console.log("entrou");
+            // console.log("entrou");
         });
     },
-    sendRespostas: function(votacao, callback){
+    sendRespostas: function(resposta, callback){
+        // console.log(resposta);
     	var data = {
-            Regional: 'AL',
-            COD_Ocupacao :  76,
-            CodigoBarras :  "95012300000338",
-            COD_Alternativa: 80
+            Regional: resposta.regional,
+            COD_Ocupacao :  resposta.COD_Ocupacao,
+            CodigoBarras :  resposta.codigo,
+            COD_Alternativa: resposta.COD_Alternativa
         };
         $.ajax({
             url: app.ambientes[app.ambiente]+"votacao.asp?action=setRespostas",
@@ -57,14 +58,16 @@ var ajax = {
                 callback(false);
             }
         }).then(function(){
-            console.log("entrou");
+            // console.log("entrou");
         });
     },
     envioEmBackground: function(){
     	if(ajax.filaSend.length>0){
 	    	return ajax.sendRespostas(ajax.filaSend[0], function(flag){
-	    		if(flag){
+                // console.log(ajax.filaSend.length,ajax.filaSend[0])
+                if(flag){
 	    			ajax.filaSend.remove(0,0);
+                    ajax.salvarFila();
 	    		} 
 	    		setTimeout(ajax.envioEmBackground,  ajax.tempoEnvioBackground);
 	    	});

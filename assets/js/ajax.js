@@ -74,7 +74,7 @@ var ajax = {
     },
     init: function(){
     	var filaSend = localStorage.getItem("filaSend");
-    	filaSend = filaSend == null?[]:filaSend = JSON.parse(filaSend);
+    	filaSend = filaSend == null?[]:JSON.parse(filaSend);
     	ajax.filaSend = filaSend;
     	setTimeout(ajax.envioEmBackground, ajax.tempoEnvioBackground);
     }

@@ -56,7 +56,7 @@ var questionario = {
     
     init: function(){
     	var respostas = localStorage.getItem("respostas");
-    	respostas = respostas == null?[]:respostas = JSON.parse(respostas);
+    	respostas = respostas == null?[]:JSON.parse(respostas);
     	questionario.respostas = respostas;
     }
 }

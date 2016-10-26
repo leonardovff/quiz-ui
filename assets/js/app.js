@@ -71,7 +71,7 @@ var app = {
     }, 
 
 }
-function ini tApp(){
+function initApp(){
     app.setEvents();
     // testar();
 }

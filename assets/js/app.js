@@ -52,7 +52,6 @@ var app = {
         a = htmlEntities(a);
 
         if(!validarCodigo(a)){ //validação do token
-            questionario.reset();
             erro = "Código inválido";
             if(limparFeedback === null){
                 get.item("#result").innerHTML=erro;
@@ -66,6 +65,7 @@ var app = {
             return setTimeout(captureToCanvas, 500);
         }
         app.codigo = a;
+        questionario.reset();
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";
     }, 

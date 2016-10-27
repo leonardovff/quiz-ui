@@ -81,11 +81,14 @@ function testar(){
     get.item("#hash_pw").value = "123";
     app.init(function(){
         app.resultadoLeitura("95012300000338");
-        setTimeout(function(){
-            for (var i = 0; i < 5; i++) {
-                get.item("#questao>ul>li:first-child").className = "alternativas checked";
-                questionario.next();
-            }
-        }, 2000);
+        // testarResponder();
     });
+}
+function testarResponder(){
+    setTimeout(function(){
+        for (var i = 0; i < 5; i++) {
+            get.item("#questao>ul>li:first-child").className = "alternativas checked";
+            questionario.next();
+        }
+    }, 2000);
 }

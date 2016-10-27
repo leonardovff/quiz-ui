@@ -26,7 +26,6 @@ var ajax = {
             success: function(response){
                 questionario.perguntas = response.questoes;
                 questionario.alternativas = response.alternativas;
-                questionario.total = response.questoes.length;
                 callback(true);
             },
             error: function(){
@@ -50,8 +49,6 @@ var ajax = {
             data: data,
             dataType : "json",
             success: function(response){
-                // questionario.perguntas = response.questoes;
-                // questionario.total = response.questoes.length;
                 callback(response.inserido);
             },
             error: function(){

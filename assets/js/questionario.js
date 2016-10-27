@@ -23,9 +23,12 @@ var questionario = {
         get.item("#questao>ul>li:last-child").dataset.content = questionario.perguntasFiltradas[questionario.indice].LegendaMais;
         get.item("#questao").dataset.codQuestao = questionario.perguntasFiltradas[questionario.indice].COD;
         get.item("#questao h3").innerHTML = (questionario.perguntasFiltradas[questionario.indice].Pergunta);
-        questionario.atualizarTime(0);
+        questionario.atualizarTime(config.tempoResponder);
         get.item("#pergunta").dataset.statusVotacao = "waint";
-        questionario.startTimeResponder();
+        //delay espera para a tela aparecer com a animação
+        setTimeout(function(){
+            questionario.startTimeResponder();
+        },1000);
     },
     next: function(){
         if(questionario.intervaloResposta!=null){  
@@ -53,13 +56,11 @@ var questionario = {
         if(typeof(msgFeedback) === "undefined") {
             msgFeedback = config.msgObrigado;
         }
-        console.log(msgFeedback);
         get.item("#agradecimento").innerHTML = msgFeedback;        
         get.item("#pergunta").dataset.statusVotacao = "obrigado";      
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";      
         setTimeout(function(){
-            console.log("entrou");
             app.init();
             get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
             get.item("#captura").dataset.status = "step-atual";
@@ -86,11 +87,11 @@ var questionario = {
         get.item("#time").innerHTML = tempo;
     },
     startTimeResponder: function(){
-        var tempo = 0;
+        var tempo = config.tempoResponder;
         questionario.intervaloResposta = setInterval(function(){
-            tempo += 1;
+            tempo -= 1;
             questionario.atualizarTime(tempo);
-            if(tempo >= config.tempoResponder){
+            if(tempo <= 0){
                 if(questionario.intervaloResposta!=null){
                     clearInterval(questionario.intervaloResposta);
                 }

@@ -45,6 +45,7 @@ var app = {
             return true;
         var fullscren = controlFullScreen(document.querySelector('body'));
         fullscren.open();
+        delete fullscren;
     },
     initCapturaCodigo: function(){
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";

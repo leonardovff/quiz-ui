@@ -1,6 +1,5 @@
 var ajax = {
     filaSend: null,
-    tempoEnvioBackground: 5000,
     salvarFila: function(fila){
     	if(typeof(fila)=="undefined") {
     		fila = ajax.filaSend;
@@ -66,17 +65,17 @@ var ajax = {
 	    			ajax.filaSend.remove(0,0);
                     ajax.salvarFila();
 	    		} 
-	    		setTimeout(ajax.envioEmBackground,  ajax.tempoEnvioBackground);
+	    		setTimeout(ajax.envioEmBackground,  config.tempoEnvioBackground);
 	    	});
     	}
-    	setTimeout(ajax.envioEmBackground,  ajax.tempoEnvioBackground);
+    	setTimeout(ajax.envioEmBackground,  config.tempoEnvioBackground);
 
     },
     init: function(){
     	var filaSend = localStorage.getItem("filaSend");
     	filaSend = filaSend == null?[]:JSON.parse(filaSend);
     	ajax.filaSend = filaSend;
-    	setTimeout(ajax.envioEmBackground, ajax.tempoEnvioBackground);
+    	setTimeout(ajax.envioEmBackground, config.tempoEnvioBackground);
     }
 }
 ajax.init();

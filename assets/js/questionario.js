@@ -6,6 +6,7 @@ var questionario = {
     indice: 0,
     respostas: null,
     position: null,
+    intervaloResposta: null,
     renderize: function(){
         // console.log(questionario.perguntasFiltradas, questionario.indice, questionario.total);
         var stringAlternativas = "",
@@ -17,14 +18,19 @@ var questionario = {
 				stringAlternativas += questionario.alternativas[i].Alternativa+'</li>';
     		}
     	}
-    	get.item("#questao>ul").innerHTML = stringAlternativas;
-    	get.item("#questao>ul>li:first-child").dataset.content = questionario.perguntasFiltradas[questionario.indice].LegendaMenos;
-    	get.item("#questao>ul>li:last-child").dataset.content = questionario.perguntasFiltradas[questionario.indice].LegendaMais;
-    	get.item("#questao").dataset.codQuestao = questionario.perguntasFiltradas[questionario.indice].COD;
-    	get.item("#questao h3").innerHTML = (questionario.perguntasFiltradas[questionario.indice].Pergunta);
-    	get.item("#pergunta").dataset.statusVotacao = "waint";
+        get.item("#questao>ul").innerHTML = stringAlternativas;
+        get.item("#questao>ul>li:first-child").dataset.content = questionario.perguntasFiltradas[questionario.indice].LegendaMenos;
+        get.item("#questao>ul>li:last-child").dataset.content = questionario.perguntasFiltradas[questionario.indice].LegendaMais;
+        get.item("#questao").dataset.codQuestao = questionario.perguntasFiltradas[questionario.indice].COD;
+        get.item("#questao h3").innerHTML = (questionario.perguntasFiltradas[questionario.indice].Pergunta);
+        questionario.atualizarTime(0);
+        get.item("#pergunta").dataset.statusVotacao = "waint";
+        questionario.startTimeResponder();
     },
     next: function(){
+        if(questionario.intervaloResposta!=null){  
+            clearInterval(questionario.intervaloResposta);
+        } 
     	var respostas = {
     		codQuestao: get.item("#questao").dataset.codQuestao,
     		COD_Alternativa: get.item("#questao>ul>li.checked").dataset.codAlternativa,	
@@ -43,14 +49,19 @@ var questionario = {
     	questionario.indice += 1;
     	questionario.renderize();
     },
-    destroy: function(){
+    destroy: function(msgFeedback){
+        if(typeof(msgFeedback) === "undefined") {
+            msgFeedback = "Muito obrigado por votar";
+        }
+        console.log(msgFeedback);
+        get.item("#agradecimento").innerHTML = msgFeedback;
         get.item("#pergunta").dataset.statusVotacao = "obrigado";      
         setTimeout(function(){
             console.log("entrou");
             app.initCapturaCodigo();
             get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
             get.item("#captura").dataset.status = "step-atual";
-        }, app.tempoObrigado*1000)
+        }, config.tempoFeedback*1000);
     },
     filtrar: function(){
         var arr = [],
@@ -69,13 +80,28 @@ var questionario = {
         }
         questionario.perguntasFiltradas = arr;
     },
+    atualizarTime: function(tempo){
+        get.item("#time").innerHTML = tempo;
+    },
+    startTimeResponder: function(){
+        var tempo = 0;
+        questionario.intervaloResposta = setInterval(function(){
+            tempo += 1;
+            questionario.atualizarTime(tempo);
+            if(tempo >= config.tempoResponder){
+                if(questionario.intervaloResposta!=null){
+                    clearInterval(questionario.intervaloResposta);
+                }
+                questionario.destroy("Seu tempo acabou :(<br>Tente novamente!");
+            }
+        }, 1000);
+    },
     start: function(){
         questionario.filtrar();
         questionario.indice = 0;
         questionario.total = questionario.perguntasFiltradas.length;
         if(questionario.total == 0 ){
-            alert("Você já respondeu todas as questões dessa equipe do dia atual.");
-            app.initCapturaCodigo();
+            questionario.destroy("Você já respondeu todas as questões dessa equipe do dia atual.");
             return false;
         }
     	questionario.renderize();

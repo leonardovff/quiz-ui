@@ -3,12 +3,11 @@ var app = {
     ambiente: 0,
     debugger: true,
     codigo: null,
-    regional: 'AL',
-    COD_Ocupacao: 76,
-    tempoObrigado: 2, // em segudos
+    regional: 'BA',
+    COD_Ocupacao: 78,
     setEvents: function(){
         get.item("#entrar").addEventListener('click',function(){
-            app.init();
+            app.login();
         },false);    
 
         get.item("#iniciar").addEventListener('click',function(){ 
@@ -30,27 +29,32 @@ var app = {
         });
 
     },
-    initCapturaCodigo: function(){
-        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
-        get.item("#instrucao-leitura").dataset.status = "active";
-        setTimeout(captureToCanvas, 500);
-    },
-    init: function(callback){
+    login: function(){
         if(get.item("#hash_pw").value!=="123"){
             return alert("Hash incorreto!");   
         } 
         ajax.getPerguntas(function(flag){
             if(!flag){
                 return alert("Não foi possivel capturar as questões");
+                if(!app.debugger)
+                    window.location.reload();
             } 
-            get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
-            get.item("#captura").dataset.status = "step-atual";
-            if(typeof(callback)==="function") callback();
-            if(app.debugger)
-                return true;
-            var fullscren = controlFullScreen(document.querySelector('body'));
-            return fullscren.open();
+            app.init();
         });
+    },
+    initCapturaCodigo: function(){
+        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
+        get.item("#instrucao-leitura").dataset.status = "active";
+        setTimeout(captureToCanvas, 500);
+    },
+    init: function(callback){
+        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+        get.item("#captura").dataset.status = "step-atual";
+        if(typeof(callback)==="function") callback();
+        if(app.debugger)
+            return true;
+        var fullscren = controlFullScreen(document.querySelector('body'));
+        return fullscren.open();
     },
     resultadoLeitura: function(a){
         a = htmlEntities(a);
@@ -75,19 +79,22 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    // testar();
+    testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";
-    app.init(function(){
-        app.resultadoLeitura("95012300000338");
+    // app.init(function(){
+        // app.resultadoLeitura("95012300000338");
         // testarResponder();
-    });
+        // AL - 2,3,5,3,5
+        // BA - 1,4,5,3,5
+    // });
 }
 function testarResponder(){
     setTimeout(function(){
         for (var i = 0; i < 5; i++) {
-            get.item("#questao>ul>li:first-child").className = "alternativas checked";
+            var arr = [75,88,99,119,108];
+            get.item('#questao>ul>li[data-cod-alternativa="'+arr[i]+'"]').className = "alternativas checked";
             questionario.next();
         }
     }, 2000);

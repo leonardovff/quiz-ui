@@ -41,6 +41,10 @@ var app = {
             } 
             app.init(callback);
         });
+        if(app.debugger)
+        return true;
+        var fullscren = controlFullScreen(document.querySelector('body'));
+        fullscren.open();
     },
     initCapturaCodigo: function(){
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
@@ -51,10 +55,6 @@ var app = {
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
         if(typeof(callback)==="function") callback();
-        if(app.debugger)
-            return true;
-        var fullscren = controlFullScreen(document.querySelector('body'));
-        return fullscren.open();
     },
     resultadoLeitura: function(a){
         a = htmlEntities(a);

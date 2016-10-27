@@ -51,14 +51,16 @@ var questionario = {
     },
     destroy: function(msgFeedback){
         if(typeof(msgFeedback) === "undefined") {
-            msgFeedback = "Muito obrigado por votar";
+            msgFeedback = config.msgObrigado;
         }
         console.log(msgFeedback);
-        get.item("#agradecimento").innerHTML = msgFeedback;
+        get.item("#agradecimento").innerHTML = msgFeedback;        
         get.item("#pergunta").dataset.statusVotacao = "obrigado";      
+        get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+        get.item("#pergunta").dataset.status = "step-atual";      
         setTimeout(function(){
             console.log("entrou");
-            app.initCapturaCodigo();
+            app.init();
             get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
             get.item("#captura").dataset.status = "step-atual";
         }, config.tempoFeedback*1000);
@@ -92,7 +94,7 @@ var questionario = {
                 if(questionario.intervaloResposta!=null){
                     clearInterval(questionario.intervaloResposta);
                 }
-                questionario.destroy("Seu tempo acabou :(<br>Tente novamente!");
+                questionario.destroy(config.msgFimTempo);
             }
         }, 1000);
     },
@@ -101,7 +103,7 @@ var questionario = {
         questionario.indice = 0;
         questionario.total = questionario.perguntasFiltradas.length;
         if(questionario.total == 0 ){
-            questionario.destroy("Você já respondeu todas as questões dessa equipe do dia atual.");
+            questionario.destroy(config.msgSemPergunta);
             return false;
         }
     	questionario.renderize();

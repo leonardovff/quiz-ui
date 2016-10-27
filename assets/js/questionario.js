@@ -74,7 +74,8 @@ var questionario = {
         questionario.indice = 0;
         questionario.total = questionario.perguntasFiltradas.length;
         if(questionario.total == 0 ){
-            alert("Você já respondeu todas as questões dessa equipe do dia atual.")
+            alert("Você já respondeu todas as questões dessa equipe do dia atual.");
+            app.initCapturaCodigo();
             return false;
         }
     	questionario.renderize();

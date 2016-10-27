@@ -42,7 +42,7 @@ var app = {
             app.init(callback);
         });
         if(app.debugger)
-        return true;
+            return true;
         var fullscren = controlFullScreen(document.querySelector('body'));
         fullscren.open();
     },
@@ -54,6 +54,8 @@ var app = {
     init: function(callback){
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
+        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
+        get.item("#instrucao-inicio").dataset.status = "active";
         if(typeof(callback)==="function") callback();
     },
     resultadoLeitura: function(a){

@@ -1,7 +1,7 @@
 var app = {
     ambientes: ["http://10.83.3.192/sgo/"],
     ambiente: 0,
-    debugger: true,
+    debugger: false,
     codigo: null,
     regional: 'BA',
     COD_Ocupacao: 78,
@@ -79,7 +79,7 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    testar();
+    // testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";

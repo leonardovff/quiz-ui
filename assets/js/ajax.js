@@ -25,6 +25,7 @@ var ajax = {
             success: function(response){
                 questionario.perguntas = response.questoes;
                 questionario.alternativas = response.alternativas;
+                app.dataResposta = response.data;
                 callback(true);
             },
             error: function(){

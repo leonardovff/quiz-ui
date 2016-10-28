@@ -41,7 +41,8 @@ var questionario = {
     		COD_Alternativa: get.item("#questao>ul>li.checked").dataset.codAlternativa,	
     		regional: app.regional,
     		COD_Ocupacao:  app.COD_Ocupacao,
-    		codigo: app.codigo, 
+    		codigo: app.codigo,
+            dataResposta: app.dataResposta 
     	}
     	ajax.adicionarNaFila(respostas);
     	questionario.respostas.push(respostas);
@@ -81,6 +82,7 @@ var questionario = {
                 if(value.codigo == app.codigo && 
                 value.COD_Ocupacao == app.COD_Ocupacao && 
                 value.regional == app.regional && 
+                value.dataResposta == app.dataResposta && 
                 value.codQuestao == questionario.perguntas[i].COD)
                     return true;
             });

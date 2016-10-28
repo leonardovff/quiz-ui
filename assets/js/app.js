@@ -5,6 +5,7 @@ var app = {
     codigo: null,
     regional: 'BA',
     COD_Ocupacao: 78,
+    dataResposta: null,
     setEvents: function(){
         get.item("#entrar").addEventListener('click',function(){
             app.login();
@@ -89,12 +90,12 @@ function initApp(){
 }
 function testar(){
     get.item("#hash_pw").value = "123";
-    // app.login(function(){
-        // app.resultadoLeitura("95012300000338");
-        // testarResponder();
+    app.login(function(){
+        app.resultadoLeitura("95012300000338");
+        testarResponder();
         // AL - 2,3,5,3,5
         // BA - 1,4,5,3,5
-    // });
+    });
 }
 function testarResponder(){
     setTimeout(function(){

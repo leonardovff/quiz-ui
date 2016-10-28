@@ -145,4 +145,5 @@
 	background-color: #829e1a;
 	margin-top: 36vh;
 	z-index: 51;
+	transition: margin-top 1s;
 }

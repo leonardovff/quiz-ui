@@ -33,12 +33,15 @@ var app = {
         if(get.item("#hash_pw").value!=="123"){
             return alert("Hash incorreto!");   
         } 
+        get.item("#entrar").className="loading";
         ajax.getPerguntas(function(flag){
             if(!flag){
-                return alert("Não foi possivel capturar as questões");
+                alert("Não foi possivel capturar as questões");
                 if(!app.debugger)
                     window.location.reload();
+                return false;
             } 
+            get.item("#entrar").className="";
             app.init(callback);
         });
         if(app.debugger)
@@ -82,16 +85,16 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    // testar();
+    testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";
-    app.login(function(){
-        app.resultadoLeitura("95012300000338");
+    // app.login(function(){
+        // app.resultadoLeitura("95012300000338");
         // testarResponder();
         // AL - 2,3,5,3,5
         // BA - 1,4,5,3,5
-    });
+    // });
 }
 function testarResponder(){
     setTimeout(function(){

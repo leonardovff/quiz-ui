@@ -26,14 +26,16 @@ var questionario = {
         questionario.atualizarTime(config.tempoResponder);
         get.item("#pergunta").dataset.statusVotacao = "waint";
         //delay espera para a tela aparecer com a animação
-        setTimeout(function(){
+        // setTimeout(function(){
             questionario.startTimeResponder();
-        },1000);
+        // },1000);
     },
     next: function(){
-        if(questionario.intervaloResposta!=null){  
+        console.log(questionario.intervaloResposta);
+        if(questionario.intervaloResposta!=null){
+            console.log("Excluiu");
             clearInterval(questionario.intervaloResposta);
-        } 
+        }
     	var respostas = {
     		codQuestao: get.item("#questao").dataset.codQuestao,
     		COD_Alternativa: get.item("#questao>ul>li.checked").dataset.codAlternativa,	
@@ -45,8 +47,13 @@ var questionario = {
     	questionario.respostas.push(respostas);
 		questionario.salvarRespostas();
     	// console.log(questionario.indice + 1, questionario.total);
-    	if(questionario.indice + 1 >= questionario.total) {
+    	
+        if(questionario.indice + 1 >= questionario.total) {
     		//acabou as questões
+            if(questionario.intervaloResposta!=null){
+                console.log("Excluiu");
+                clearInterval(questionario.intervaloResposta);
+            }
             return questionario.destroy();
     	}
     	questionario.indice += 1;
@@ -87,7 +94,11 @@ var questionario = {
         get.item("#time").innerHTML = tempo;
     },
     startTimeResponder: function(){
+        if(questionario.intervaloResposta!=null){
+            clearInterval(questionario.intervaloResposta);
+        }
         var tempo = config.tempoResponder;
+        console.log("setou");
         questionario.intervaloResposta = setInterval(function(){
             tempo -= 1;
             questionario.atualizarTime(tempo);

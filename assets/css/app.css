@@ -246,3 +246,18 @@ h3{
     transform: rotate(164.3deg);
     background: #d0202a;
 }
+#entrar,
+#iniciar,
+#pergunta #confirmar,
+#login>div>#entrar.loading{
+	pointer-events: none;
+}
+#login[data-status="step-atual"] #entrar{
+	pointer-events: auto;
+}
+#captura[data-status="step-atual"]>#instrucao-inicio[data-status="active"] #iniciar{
+	pointer-events: auto;
+}
+#pergunta[data-status-votacao="selected"] #confirmar{
+		pointer-events: auto;
+}

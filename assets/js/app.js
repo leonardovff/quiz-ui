@@ -85,7 +85,7 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    testar();
+    // testar();
 }
 function testar(){
     get.item("#hash_pw").value = "123";

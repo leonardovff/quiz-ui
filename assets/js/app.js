@@ -1,10 +1,13 @@
 var app = {
     ambientes: ["http://10.83.3.192/sgo/"],
     ambiente: 0,
-    debugger: false,
+    debugger: true,
     codigo: null,
-    regional: 'BA',
-    COD_Ocupacao: 78,
+    regional: null,
+    ocupacao: null,
+    hash: null,
+    corPrimaria: null,
+    corSecundaria: null,
     dataResposta: null,
     setEvents: function(){
         get.item("#entrar").addEventListener('click',function(){
@@ -31,13 +34,11 @@ var app = {
 
     },
     login: function(callback){
-        if(get.item("#hash_pw").value!=="123"){
-            return alert("Hash incorreto!");   
-        } 
+        var hash = get.item("#hash_pw").value;
         get.item("#entrar").className="loading";
-        ajax.getPerguntas(function(flag){
+        ajax.getPerguntas(hash, function(flag){
             if(!flag){
-                alert("Não foi possivel capturar as questões");
+                alert("Não foi possivel capturar as questões, hash incorreto");
                 if(!app.debugger)
                     window.location.reload();
                 return false;
@@ -86,10 +87,10 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    // testar();
+    testar();
 }
 function testar(){
-    get.item("#hash_pw").value = "123";
+    get.item("#hash_pw").value = "xupekx";
     app.login(function(){
         app.resultadoLeitura("95012300000338");
         testarResponder();

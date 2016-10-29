@@ -4,5 +4,5 @@ var config = {
 	tempoFeedback: 5, // em segundos
 	msgSemPergunta: "Você já respondeu todas as questões dessa equipe hoje. <br> volte amanhã!",
 	msgObrigado: "Muito obrigado por votar",
-	msgFimTempo: "Seu tempo acabou :(<br>Tente novamente!"
+	msgFimTempo: "Seu tempo acabou :(<br>Tente novamente!",
 }

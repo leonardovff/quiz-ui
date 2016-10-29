@@ -10,23 +10,25 @@ var ajax = {
     	ajax.filaSend.push(resposta);
     	ajax.salvarFila();
     },
-	getPerguntas: function(callback){
+	getPerguntas: function(psw,callback){
         var data = {
-            Regional: "AL",
-            COD_Ocupacao :  76,
-            CodigoBarras :  "95012300000338",
-            action: "getQuestoes"
+            hash: psw
         };
         $.ajax({
-            url: app.ambientes[app.ambiente]+"votacao.asp",
-            method: "GET",
+            url: app.ambientes[app.ambiente]+"votacao.asp?action=getQuestoes",
+            method: "POST",
             data: data,
             dataType : "json",
             success: function(response){
-                questionario.perguntas = response.questoes;
-                questionario.alternativas = response.alternativas;
-                app.dataResposta = response.data;
-                callback(true);
+                if(response.flag){
+                    questionario.perguntas = response.questoes;
+                    questionario.alternativas = response.alternativas;
+                    app.dataResposta = response.data;
+                    app.regional = response.regional;
+                    app.ocupacao = response.ocupacao;
+                    app.hash = psw;
+                }
+                callback(response.flag);
             },
             error: function(){
                 callback(false);

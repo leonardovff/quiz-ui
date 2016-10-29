@@ -38,15 +38,16 @@ var questionario = {
         }
     	var respostas = {
     		codQuestao: get.item("#questao").dataset.codQuestao,
-    		COD_Alternativa: get.item("#questao>ul>li.checked").dataset.codAlternativa,	
-    		regional: app.regional,
-    		COD_Ocupacao:  app.COD_Ocupacao,
-    		codigo: app.codigo,
-            dataResposta: app.dataResposta 
-    	}
-    	ajax.adicionarNaFila(respostas);
+            COD_Alternativa: get.item("#questao>ul>li.checked").dataset.codAlternativa, 
+            regional: app.regional.sigla,
+            COD_Ocupacao:  app.ocupacao.cod,
+            codigo: app.codigo,
+            dataResposta: app.dataResposta,
+            hash: app.hash
+        }
     	questionario.respostas.push(respostas);
 		questionario.salvarRespostas();
+        ajax.adicionarNaFila(respostas);
     	// console.log(questionario.indice + 1, questionario.total);
     	
         if(questionario.indice + 1 >= questionario.total) {
@@ -80,8 +81,8 @@ var questionario = {
         for (var i = 0, lim = questionario.perguntas.length; i < lim; i++) {
             var questoesRespondidas = questionario.respostas.filter(function(value){
                 if(value.codigo == app.codigo && 
-                value.COD_Ocupacao == app.COD_Ocupacao && 
-                value.regional == app.regional && 
+                value.COD_Ocupacao == app.ocupacao.cod && 
+                value.regional == app.regional.sigla && 
                 value.dataResposta == app.dataResposta && 
                 value.codQuestao == questionario.perguntas[i].COD)
                     return true;

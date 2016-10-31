@@ -44,6 +44,7 @@ var app = {
                 return false;
             } 
             get.item("#entrar").className="";
+            app.uploadLayot();
             app.init(callback);
         });
         if(app.debugger)
@@ -52,12 +53,20 @@ var app = {
         fullscren.open();
         delete fullscren;
     },
+    uploadLayot: function(){
+        get.all(".equipe-regional")[0].innerHTML = "Nome equipe<br>"+ app.regional.Delegacao;
+        get.all(".equipe-regional")[1].innerHTML = "Nome equipe<br>"+ app.regional.Delegacao;
+        get.all(".area")[0].innerHTML = app.ocupacao.Ocupacao;
+        get.all(".area")[1].innerHTML = app.ocupacao.Ocupacao;
+        
+    },
     initCapturaCodigo: function(){
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
         get.item("#instrucao-leitura").dataset.status = "active";
         setTimeout(captureToCanvas, 500);
     },
     init: function(callback){
+
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#captura").dataset.status = "step-atual";
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";

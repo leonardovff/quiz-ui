@@ -27,6 +27,8 @@ var ajax = {
                     app.regional = response.regional;
                     app.ocupacao = response.ocupacao;
                     app.hash = psw;
+                    app.corPrimaria = response.corPrimaria;
+                    app.corSecundaria = response.corSecundaria;
                 }
                 callback(response.flag);
             },

@@ -42,9 +42,12 @@
 	top: -1vh;
 	left: -0.2vmax;
 }
+#pergunta ul>li.checked{
+	color: #5dc6ce;
+}
 #pergunta ul>li.checked::before{
 	background: white;
-	color: #5dc6ce;
+	color: inherit;
 	line-height: 9.6vh;
 	opacity: 1;
 	-webkit-animation: select-effect 250ms 2;
@@ -82,6 +85,7 @@
 	position: absolute;
 	font-size: 1.83vw;
 	bottom: -6.8vh;
+	color: white;
 }
 #pergunta ul>li:first-child::after{
 	width: 38vw;
@@ -118,6 +122,13 @@
 	height: 0.08vh;
 	top: 89vh;
 }
+
+#confirmar{
+	background-color: #829e1a;
+	margin-top: 36vh;
+	z-index: 51;
+	transition: margin-top 0.1s;
+}
 #pergunta[data-status-votacao="selected"] #confirmar{
 	margin-top: 6vh;
 	transition: margin-top 1s;
@@ -141,10 +152,4 @@
 	top: 40vh;
 	z-index: 51;
 	transition: top 0.5s;
-}
-#confirmar{
-	background-color: #829e1a;
-	margin-top: 36vh;
-	z-index: 51;
-	transition: margin-top 1s;
 }

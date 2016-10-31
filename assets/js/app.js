@@ -1,5 +1,5 @@
 var app = {
-    ambientes: ["http://10.83.3.192/sgo/"],
+    ambientes: ["http://10.83.3.192/sgo/","olimpiada.senai.br/oc2016/"],
     ambiente: 0,
     debugger: true,
     codigo: null,
@@ -19,6 +19,7 @@ var app = {
         },false);  
 
         get.item("#confirmar").addEventListener('click',function(){ 
+            console.log("entrou");
            questionario.next();
         },false);
         get.item('body').addEventListener('click', function(event) {
@@ -58,7 +59,16 @@ var app = {
         get.all(".equipe-regional")[1].innerHTML = "Nome equipe<br>"+ app.regional.Delegacao;
         get.all(".area")[0].innerHTML = app.ocupacao.Ocupacao;
         get.all(".area")[1].innerHTML = app.ocupacao.Ocupacao;
-        
+        //primaria
+        get.item("#dir-baixo").style.backgroundColor = "#"+app.corPrimaria;
+        get.item("#esq-alto").style.backgroundColor = "#"+app.corPrimaria;
+        //secundaria
+        get.item("#esq-baixo").style.backgroundColor = "#"+app.corSecundaria;
+        get.item("#dir-alto").style.backgroundColor = "#"+app.corSecundaria;
+        get.item("#agradecimento").style.backgroundColor = "#"+app.corSecundaria;
+        get.item("#questao").style.backgroundColor = "#"+app.corSecundaria;
+        get.item("head").innerHTML += '<style type="text/css">#pergunta ul>li.checked{color:#'+app.corSecundaria+';}</style>';
+        console.log("#"+app.corSecundaria);
     },
     initCapturaCodigo: function(){
         get.item(".step-captura[data-status='active']").dataset.status = "no-active";
@@ -102,7 +112,7 @@ function testar(){
     get.item("#hash_pw").value = "xupekx";
     app.login(function(){
         app.resultadoLeitura("95012300000338");
-        testarResponder();
+        // testarResponder();
         // AL - 2,3,5,3,5
         // BA - 1,4,5,3,5
     });

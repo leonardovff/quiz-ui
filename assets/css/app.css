@@ -129,19 +129,18 @@ h3{
 	width: 58%;
     height: 20%;
     position: absolute;
-    bottom: -14%;
+    bottom: -11%;
     left: -4%;
     transform: rotate(6.3deg);
     background: #5dc6ce;
 }
 #dir-baixo{
-	width: 75%;
+	width: 88%;
     height: 25%;
     position: absolute;
-    bottom: -17.7%;
-    right: -6%;
-    transform: rotate(164.3deg);
-    background: #d0202a;
+    bottom: -15.7%;
+    right: -9%;
+    transform: rotate(164.3deg);    background: #d0202a;
 }
 .equipe-regional, .area{
 	color: white;
@@ -150,15 +149,21 @@ h3{
 }
 .equipe-regional{
 	left: 3.7%;
-	bottom: 1.6%;
-	text-align: left;
-	font-size: 2.0vw;
+    bottom: 2.6%;
+    text-align: left;
+    width: 27vw;
+    font-size: 2.6vw;
 }
 .area{
-	bottom: 2.5%;
+	bottom: 3.1%;
+    right: 3.8%;
+    font-size: 2.4vw;
+    text-align: right;
+    width: 47vw;
+	/* bottom: 2.5%;
 	right:3.8%;
 	font-size: 2.4vw;
-	text-align: right;
+	text-align: right; */
 }
 .btn-go{
 	margin-top: 1.3vh;

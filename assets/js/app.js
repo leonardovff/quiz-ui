@@ -55,12 +55,27 @@ var app = {
         delete fullscren;
     },
     uploadLayot: function(){
-        get.all(".equipe-regional")[0].innerHTML = "Nome equipe<br>"+ app.regional.Delegacao;
-        get.all(".equipe-regional")[1].innerHTML = "Nome equipe<br>"+ app.regional.Delegacao;
-        get.all(".area")[0].innerHTML = app.ocupacao.Ocupacao;
-        get.all(".area")[1].innerHTML = app.ocupacao.Ocupacao;
+        var qtdDelegacao = (app.regional.Delegacao.match(/ /g) || []).length,
+        stringDelegacao1 = app.regional.Delegacao,
+        stringOcupacao1 = app.ocupacao.Ocupacao,
+        stringOcupacao2 = app.ocupacao.Ocupacao,
+        qtdOcupacao = (stringOcupacao1.match(/ /g) || []).length;
+        console.log(qtdOcupacao);
+        if(qtdOcupacao == 3 || qtdOcupacao == 2){
+            stringOcupacao1 = substituirOcorrencia(stringOcupacao1,1);
+            stringOcupacao2 = substituirOcorrencia(stringOcupacao2,2);
+        }
+        if(qtdOcupacao == 4){
+            stringOcupacao1 = substituirOcorrencia(stringOcupacao1,2);
+            stringOcupacao2 = substituirOcorrencia(stringOcupacao2,3);
+        }
+        get.all(".equipe-regional")[0].innerHTML = stringDelegacao1;
+        get.all(".equipe-regional")[1].innerHTML = app.regional.Delegacao;
+        get.all(".area")[0].innerHTML = stringOcupacao1;
+        get.all(".area")[1].innerHTML = stringOcupacao2;
         //primaria
         get.item("#dir-baixo").style.backgroundColor = "#"+app.corPrimaria;
+        get.item("#time").style.backgroundColor = "#"+app.corPrimaria;
         get.item("#esq-alto").style.backgroundColor = "#"+app.corPrimaria;
         //secundaria
         get.item("#esq-baixo").style.backgroundColor = "#"+app.corSecundaria;
@@ -106,23 +121,5 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    testar();
-}
-function testar(){
-    get.item("#hash_pw").value = "xupekx";
-    app.login(function(){
-        app.resultadoLeitura("95012300000338");
-        // testarResponder();
-        // AL - 2,3,5,3,5
-        // BA - 1,4,5,3,5
-    });
-}
-function testarResponder(){
-    setTimeout(function(){
-        for (var i = 0; i < 5; i++) {
-            var arr = [75,88,99,119,108];
-            get.item('#questao>ul>li[data-cod-alternativa="'+arr[i]+'"]').className = "alternativas checked";
-            questionario.next();
-        }
-    }, 2000);
+    // testar();
 }

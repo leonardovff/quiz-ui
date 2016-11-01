@@ -100,14 +100,16 @@
 #pergunta .area{
 	top: 3.3vh;
 	left: 4.6vw;
-	width: 42vw;
+	width: 43vw;
 	text-align: left;
 	right: auto;
 } 
 #pergunta .equipe-regional{
 	top: 3.8vh;
-	right: 15.6vw;
-	left: auto;
+    right: 3.6vw;
+    width: 34vw;
+    text-align: right;
+    left: auto;
 }
 #pergunta{
 	background: url("../img/logos.png") white no-repeat center 91.1vh;

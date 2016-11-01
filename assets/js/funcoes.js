@@ -29,3 +29,11 @@ Array.prototype.remove = function(from, to) {
   this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
+function substituirOcorrencia(string, numeroOcorrencia){
+  var nth = 0;
+  string = string.replace(/ /g, function (match, i, original) {
+      nth++;
+      return (nth === numeroOcorrencia) ? '<br>' : match;
+  });
+  return string;
+}

@@ -1,0 +1,58 @@
+#inserirCod{
+	background-color: white;
+	width: 59%;
+	border-radius: 10px;
+	font-weight: lighter;
+	position: relative;
+	margin: 0 auto;
+	font-size: 1.2vmax;
+	font-family: "Futura Bold";
+}
+#inserirCod>h4{
+	font: inherit;
+	background-color: #f21a26;
+	width: 100%;
+	padding: 2.7vh 0;
+	color: white;
+}
+#inserirCod>h6{
+	margin-top: 4vh;
+	font-size: inherit;
+	display: block;
+	background-color: #f21a26;
+	width: 100%;
+	padding: 2.7vh 0;
+	color: white;
+}
+#inserirCod>label{
+	text-align: center;
+	width: 100%;
+	color: #6b6767;
+	display: block;
+	font-size: 1.1vmax;
+	margin-top: 4vh;
+}
+#inserirCod>input{
+	border: 1px solid #6b6767;
+    font-size: 2vmax;
+    text-align: center;
+    color: #6b6767;
+    padding: 1vh 0;
+    background: #ece3e3;
+    margin-top: 2vh;
+    width: 60%;
+}
+#inserirCod>button{
+	text-align: center;
+	margin-top: 1vh;
+	padding: 1.2vh 0;
+	width: 30%;
+	font-size: 1.5vmax;
+	color: white;
+}
+#inserirCod>button[type="reset"]{
+	background-color: #f3a8ab;
+}
+#inserirCod>button[type="button"]{
+	background-color: #1fced5;
+}

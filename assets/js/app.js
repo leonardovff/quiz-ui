@@ -1,7 +1,7 @@
 var app = {
     ambientes: ["http://10.83.3.192/sgo/","olimpiada.senai.br/oc2016/"],
     ambiente: 0,
-    debugger: true,
+    debugger: false,
     codigo: null,
     regional: null,
     ocupacao: null,
@@ -18,6 +18,22 @@ var app = {
             app.initCapturaCodigo();
         },false);  
 
+        get.item("#inserir-manualmente").addEventListener('click',function(){ 
+           app.abriCaixaCodigo();
+        },false);
+
+        get.item("#inserirCod>button[type='button']").addEventListener('click',function(){ 
+           app.resultadoLeitura(get.item("#cod-usuario").value, function(erro){
+                alert(erro);
+                get.item("#inserirCod>button[type='reset']").click();
+           });
+        },false);
+
+        get.item("#inserirCod>button[type='reset']").addEventListener('click',function(){ 
+           stype = 1;
+           app.initCapturaCodigo();
+        },false);
+
         get.item("#confirmar").addEventListener('click',function(){ 
             console.log("entrou");
            questionario.next();
@@ -33,6 +49,11 @@ var app = {
             }
         });
 
+    },  
+    abriCaixaCodigo: function(){
+        get.item(".step-captura[data-status='active']").dataset.status = "no-active";
+        get.item("#inserirCod").dataset.status = "active";
+        stype = 0;
     },
     login: function(callback){
         var hash = get.item("#hash_pw").value;
@@ -98,15 +119,17 @@ var app = {
         get.item("#instrucao-inicio").dataset.status = "active";
         if(typeof(callback)==="function") callback();
     },
-    resultadoLeitura: function(a){
+    resultadoLeitura: function(a, callbackErro){
         a = htmlEntities(a);
-
         if(!validarCodigo(a)){ //validação do token
             erro = "Código inválido";
             if(limparFeedback === null){
                 get.item("#result").innerHTML=erro;
             } else {
                 clearInterval(limparFeedback);
+            }
+            if(typeof(callbackErro)=="function"){
+                callbackErro(erro);
             }
             limparFeedback = setTimeout(function(){
                 limparFeedback = null;
@@ -121,5 +144,5 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    // testar();
+    testar();
 }

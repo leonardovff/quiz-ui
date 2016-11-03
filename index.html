@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema de Votação de Visitantes</title>
   <link rel="stylesheet" type="text/css" href="assets/css/app.css"> 
-  <link rel="stylesheet" type="text/css" href="assets/css/seta.css"> 
+  <link rel="stylesheet" type="text/css" href="assets/css/seta.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/inserir.css">
   <link rel="stylesheet" type="text/css" href="assets/css/questionario.css">
 </head>
 
@@ -19,7 +20,7 @@
       <button type="button" name="entrar" id="entrar">Entrar</button>
     </div>
   </section>
-  <section id="captura" data-status="">
+  <section id="captura" data-status="no-active">
     <div id="outdiv">
       <video id="video" autoplay="" src=""></video>
     </div>
@@ -39,11 +40,15 @@
       <h3 class="instrucoes">Apresente seu QR CODE e participe da votação popular!</h3>
       <button id="inserir-manualmente" type="button">Inserir manualmente</button>
     </div>
-    <div data-status="no-active" class="step-captura caixa-input">
+    <form id="inserirCod" data-status="no-active" class="step-captura caixa-input">
+
       <h4>INSERIR MANUALMENTE</h4>
       <label for="cod-usuario">Digite o código da pulseira ou crachá</label>
-      <input type="number" id="cod-usuario" name="cod-usuario">
-    </div>
+      <input placeholder="inserir cod" type="number" id="cod-usuario" name="cod-usuario"><br>
+      <button type="reset">CANCELAR</button>
+      <button type="button">CONFIRMAR</button>
+      <h6>FEITO POR: NTM</h6>
+    </form>
     <div id="esq-baixo"></div>
     <div id="dir-baixo"></div>
     <p class="equipe-regional">Nome equipe<br>Alagoas</p>

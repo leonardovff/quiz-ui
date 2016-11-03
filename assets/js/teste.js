@@ -1,5 +1,8 @@
 function testar(){
-    get.item("#hash_pw").value = "maivkt";
+    // get.item("#iniciar").click();
+    // get.item("#inserir-manualmente").click();
+    return true;
+    get.item("#hash_pw").value = "";
     app.login(function(){
         // app.resultadoLeitura("95012300000338");
         // testarResponder();

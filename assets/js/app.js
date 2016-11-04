@@ -1,7 +1,7 @@
 var app = {
     ambientes: ["http://10.83.3.192/sgo/","//olimpiada.senai.br/oc2016/"],
-    ambiente: 1,
-    debugger: true,
+    ambiente: 0,
+    debugger: false,
     codigo: null,
     regional: null,
     ocupacao: null,
@@ -149,7 +149,6 @@ var app = {
         if(typeof(callback)=="function"){
             callback(true);
         }
-        alert("entrou, foi");
         app.codigo = a;
         questionario.start();
     }, 

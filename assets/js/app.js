@@ -1,5 +1,5 @@
 var app = {
-    ambientes: ["http://10.83.3.192/sgo/","http://olimpiada.senai.br/oc2016/"],
+    ambientes: ["http://10.83.3.192/sgo/","//olimpiada.senai.br/oc2016/"],
     ambiente: 1,
     debugger: true,
     codigo: null,

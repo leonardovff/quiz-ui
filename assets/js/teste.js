@@ -1,7 +1,7 @@
 function testar(){
-    return true; 
-    get.item("#hash_pw").value = "";
+    get.item("#hash_pw").value = "liipzd";
     app.login(function(){
+    return true; 
         get.item("#iniciar").click();
         get.item("#inserir-manualmente").click();
         app.resultadoLeitura("95012300000338");

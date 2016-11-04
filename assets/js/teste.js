@@ -1,14 +1,14 @@
 function testar(){
     get.item("#hash_pw").value = "maivkt";
+    return true; 
     app.login(function(){
     get.item("#iniciar").click();
         //get.item("#inserir-manualmente").click();
         app.resultadoLeitura("95012300000338");
-    return true; 
         testarResponder();
         // AL - 2,3,5,3,5
         // BA - 1,4,5,3,5
-    // });
+    });
 }
 function testarResponder(){
     setTimeout(function(){

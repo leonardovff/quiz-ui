@@ -1,9 +1,9 @@
 function testar(){
-    // get.item("#iniciar").click();
-    // get.item("#inserir-manualmente").click();
-    return true;
-    get.item("#hash_pw").value = "maivkt";
+    return true; 
+    get.item("#hash_pw").value = "";
     app.login(function(){
+        get.item("#iniciar").click();
+        get.item("#inserir-manualmente").click();
         // app.resultadoLeitura("95012300000338");
         // testarResponder();
         // AL - 2,3,5,3,5

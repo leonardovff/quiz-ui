@@ -23,10 +23,14 @@ var app = {
         },false);
 
         get.item("#inserirCod>button[type='button']").addEventListener('click',function(){ 
-           app.resultadoLeitura(get.item("#cod-usuario").value, function(erro){
-                alert(erro);
+            console.log("enrtrou");
+            app.resultadoLeitura(get.item("#cod-usuario").value, function(flag, detalhes){
+                if(flag){
+                    return get.item("#cod-usuario").value = "";
+                }
+                alert(detalhes);
                 get.item("#inserirCod>button[type='reset']").click();
-           });
+            });
         },false);
 
         get.item("#inserirCod>button[type='reset']").addEventListener('click',function(){ 
@@ -123,7 +127,7 @@ var app = {
         get.item("#instrucao-inicio").dataset.status = "active";
         if(typeof(callback)==="function") callback();
     },
-    resultadoLeitura: function(a, callbackErro){
+    resultadoLeitura: function(a, callback){
         a = htmlEntities(a);
         if(!validarCodigo(a)){ //validação do token
             erro = "Código inválido";
@@ -132,8 +136,8 @@ var app = {
             } else {
                 clearInterval(limparFeedback);
             }
-            if(typeof(callbackErro)=="function"){
-                callbackErro(erro);
+            if(typeof(callback)=="function"){
+                callback(false,erro);
             }
             limparFeedback = setTimeout(function(){
                 limparFeedback = null;
@@ -141,6 +145,10 @@ var app = {
             }, 500);
             return setTimeout(captureToCanvas, 500);
         }
+        if(typeof(callback)=="function"){
+            callback(true);
+        }
+        console.log("entrou");
         app.codigo = a;
         questionario.start();
     }, 

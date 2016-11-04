@@ -70,7 +70,7 @@ var questionario = {
         get.item("#pergunta").dataset.statusVotacao = "obrigado";      
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";      
-        feedbackIntervalo = setTimeout(function(){
+        questionario.feedbackIntervalo = setTimeout(function(){
             app.init();
             get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
             get.item("#captura").dataset.status = "step-atual";

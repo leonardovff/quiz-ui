@@ -23,19 +23,19 @@ var app = {
         },false);
 
         get.item("#inserirCod>button[type='button']").addEventListener('click',function(){ 
-            console.log("enrtrou");
+            if(get.item("#cod-usuario").value == "") return false;
             app.resultadoLeitura(get.item("#cod-usuario").value, function(flag, detalhes){
-                if(flag){
-                    stype = 1;
-                    return get.item("#cod-usuario").value = "";
+                stype = 1;
+                get.item("#cod-usuario").value = "";
+                if(!flag){   
+                	alert(detalhes);
                 }
-                alert(detalhes);
-                get.item("#inserirCod>button[type='reset']").click();
             });
         },false);
 
         get.item("#agradecimento").addEventListener('click',function(){ 
-            if(typeof(feedbackIntervalo)!=null){
+        	console.log(questionario.feedbackIntervalo);
+            if(questionario.feedbackIntervalo != null){
                 clearInterval(questionario.feedbackIntervalo);
             }
             app.init();
@@ -142,13 +142,13 @@ var app = {
         a = htmlEntities(a);
         if(!validarCodigo(a)){ //validação do token
             erro = "Código inválido";
+            if(typeof(callback)=="function"){
+                return callback(false,erro);
+            }
             if(limparFeedback === null){
                 get.item("#result").innerHTML=erro;
             } else {
                 clearInterval(limparFeedback);
-            }
-            if(typeof(callback)=="function"){
-                callback(false,erro);
             }
             limparFeedback = setTimeout(function(){
                 limparFeedback = null;

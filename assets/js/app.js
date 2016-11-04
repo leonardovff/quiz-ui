@@ -77,6 +77,7 @@ var app = {
                 alert("Não foi possivel capturar as questões, hash incorreto");
                 if(!app.debugger)
                     window.location.reload();
+                get.item("#entrar").className = "";
                 return false;
             } 
             get.item("#entrar").className="";

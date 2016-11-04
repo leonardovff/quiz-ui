@@ -260,6 +260,11 @@ h3{
 #login>div>#entrar.loading{
 	pointer-events: none;
 }
+#login>div>#entrar.loading{
+	background: url(../img/rolling.gif) #e97100 no-repeat center center;
+    background-size: contain;
+    color: #e97100;
+}
 #login[data-status="step-atual"] #entrar{
 	pointer-events: auto;
 }

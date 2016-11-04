@@ -101,7 +101,7 @@ function load()
         // get.item('#video').offsetWidth
         // get.item('#video').offsetHeight  
         var video_h = (get.item('#video').offsetHeight/100) * (((600*100)/get.item('#video').offsetWidth)+20);
-        initCanvas(600, video_h);
+        initCanvas($(window).width(), $(window).height());
         qrcode.callback = app.resultadoLeitura;
         //document.getElementById("mainbody").style.display="inline";
         setwebcam();

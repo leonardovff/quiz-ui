@@ -149,7 +149,7 @@ var app = {
         if(typeof(callback)=="function"){
             callback(true);
         }
-        console.log("entrou");
+        alert("entrou, foi");
         app.codigo = a;
         questionario.start();
     }, 

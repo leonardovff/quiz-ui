@@ -84,14 +84,13 @@ function success(stream) {
     else
         v.src = stream;
     gUM=true;
-    // setTimeout(captureToCanvas, 500);
+    setTimeout(captureToCanvas, 500);
 }
         
 function error(error) {
     gUM=false;
     return;
 }
-
 function load()
 {
     initApp();
@@ -145,9 +144,10 @@ function setwebcam2(options)
 {
     if(stype==1)
     {
-        // setTimeout(captureToCanvas, 500);    
+        setTimeout(captureToCanvas, 500);    
         return;
     }
+    console.log(options);
     var n=navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v=document.getElementById("video");
@@ -168,5 +168,5 @@ function setwebcam2(options)
    // document.getElementById("webcamimg").style.opacity=1.0;
 
     stype=1;
-    // setTimeout(captureToCanvas, 500);        
+    setTimeout(captureToCanvas, 500);        
 }

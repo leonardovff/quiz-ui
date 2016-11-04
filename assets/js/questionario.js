@@ -131,7 +131,10 @@ var questionario = {
     	}
     	localStorage.setItem("respostas", JSON.stringify(respostas));
     },
-    
+    clear: function(){
+        localStorage.removeItem("respostas");
+        app.respostas = [];
+    },
     init: function(){
     	var respostas = localStorage.getItem("respostas");
     	respostas = respostas == null?[]:JSON.parse(respostas);

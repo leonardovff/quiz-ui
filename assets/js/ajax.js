@@ -22,6 +22,10 @@ var ajax = {
             dataType : "json",
             success: function(response){
                 if(response.flag){
+                    if(response.limpar){
+                        ajax.clear();
+                        questionario.clear();
+                    }
                     questionario.perguntas = response.questoes;
                     questionario.alternativas = response.alternativas;
                     app.dataResposta = response.data;
@@ -71,16 +75,19 @@ var ajax = {
                     ajax.filaSend.remove(0,0);
                     ajax.salvarFila();
                 } else{
-
                     if(typeof(ajax.filaSend[0].qtdTentativas)=="undefined"){
                         ajax.filaSend[0].qtdTentativas = 0;
                     };
                     ajax.filaSend[0].qtdTentativas += 1;
-                    if(ajax.filaSend[0].qtdTentativas == 3){
+                    if(ajax.filaSend[0].qtdTentativas == 3 || ajax.filaSend[0].qtdTentativas == 6|| 
+                    ajax.filaSend[0].qtdTentativas >= 9){
                         ajax.registrarLog(ajax.filaSend[0], erro);
-                        ajax.filaSend[0].qtdTentativas = 0;
                         ajax.filaSend.push(ajax.filaSend.shift()); 
                         ajax.salvarFila();
+                        if(ajax.filaSend[0].qtdTentativas>=9){
+                            ajax.filaSend.remove(0,0);
+                            ajax.salvarFila();
+                        }
                     }
                 }
 	    		setTimeout(ajax.envioEmBackground,  config.tempoEnvioBackground);
@@ -112,6 +119,12 @@ var ajax = {
         }
         ajax.log.push(log);
         localStorage.setItem("log", JSON.stringify(ajax.log));
+    },
+    clear: function(){
+        app.log = [];
+        app.filaSend = [];
+        localStorage.removeItem("log");
+        localStorage.removeItem("filaSend");
     },
     init: function(){
         var log = localStorage.getItem("log");

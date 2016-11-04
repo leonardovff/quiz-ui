@@ -1,5 +1,5 @@
 function testar(){
-    get.item("#hash_pw").value = "maivkt";
+    //get.item("#hash_pw").value = "maivkt";
     return true; 
     app.login(function(){
     get.item("#iniciar").click();

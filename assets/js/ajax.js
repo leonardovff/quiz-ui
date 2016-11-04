@@ -1,5 +1,6 @@
 var ajax = {
     filaSend: null,
+    log: null,
     salvarFila: function(fila){
     	if(typeof(fila)=="undefined") {
     		fila = ajax.filaSend;
@@ -45,7 +46,8 @@ var ajax = {
             Regional: resposta.regional,
             COD_Ocupacao :  resposta.COD_Ocupacao,
             CodigoBarras :  resposta.codigo,
-            COD_Alternativa: resposta.COD_Alternativa
+            COD_Alternativa: resposta.COD_Alternativa,
+            hash: resposta.hash
         };
         $.ajax({
             url: app.ambientes[app.ambiente]+"votacao.asp?action=setRespostas",
@@ -55,8 +57,8 @@ var ajax = {
             success: function(response){
                 callback(response.inserido);
             },
-            error: function(){
-                callback(false);
+            error: function(erro){
+                callback(false, erro);
             }
         }).then(function(){
             // console.log("entrou");
@@ -64,19 +66,57 @@ var ajax = {
     },
     envioEmBackground: function(){
     	if(ajax.filaSend.length>0){
-	    	return ajax.sendRespostas(ajax.filaSend[0], function(flag){
-                // console.log(ajax.filaSend.length,ajax.filaSend[0])
+            return ajax.sendRespostas(ajax.filaSend[0], function(flag, erro){
                 if(flag){
-	    			ajax.filaSend.remove(0,0);
+                    ajax.filaSend.remove(0,0);
                     ajax.salvarFila();
-	    		} 
+                } else{
+
+                    if(typeof(ajax.filaSend[0].qtdTentativas)=="undefined"){
+                        ajax.filaSend[0].qtdTentativas = 0;
+                    };
+                    ajax.filaSend[0].qtdTentativas += 1;
+                    if(ajax.filaSend[0].qtdTentativas == 3){
+                        ajax.registrarLog(ajax.filaSend[0], erro);
+                        ajax.filaSend[0].qtdTentativas = 0;
+                        ajax.filaSend.push(ajax.filaSend.shift()); 
+                        ajax.salvarFila();
+                    }
+                }
 	    		setTimeout(ajax.envioEmBackground,  config.tempoEnvioBackground);
 	    	});
     	}
     	setTimeout(ajax.envioEmBackground,  config.tempoEnvioBackground);
 
     },
+    registrarLog: function(obj,erro){
+        var log = {
+            data: obj,
+            info: {
+                ambiente: app.ambiente,
+                ambientes: app.ambientes,
+                config: config,
+                debugger: app.debugger
+            },
+            erro: null
+        }
+        if(typeof(erro)!="undefined"){
+            log.erro = {
+                status: erro.status,
+                responseText: erro.responseText,
+                responseHeaders: erro.getAllResponseHeaders(),
+            }
+        }
+        if(typeof(fila)=="undefined") {
+            fila = ajax.filaSend;
+        }
+        ajax.log.push(log);
+        localStorage.setItem("log", JSON.stringify(ajax.log));
+    },
     init: function(){
+        var log = localStorage.getItem("log");
+        log = log == null?[]:JSON.parse(log);
+        ajax.log = log;
     	var filaSend = localStorage.getItem("filaSend");
     	filaSend = filaSend == null?[]:JSON.parse(filaSend);
     	ajax.filaSend = filaSend;

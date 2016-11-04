@@ -1,6 +1,6 @@
 var app = {
     ambientes: ["http://10.83.3.192/sgo/","http://olimpiada.senai.br/oc2016/"],
-    ambiente: 1,
+    ambiente: 0,
     debugger: true,
     codigo: null,
     regional: null,

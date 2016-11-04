@@ -7,6 +7,7 @@ var questionario = {
     respostas: null,
     position: null,
     intervaloResposta: null,
+    feedbackIntervalo: null,
     renderize: function(){
         // console.log(questionario.perguntasFiltradas, questionario.indice, questionario.total);
         var stringAlternativas = "",
@@ -69,7 +70,7 @@ var questionario = {
         get.item("#pergunta").dataset.statusVotacao = "obrigado";      
         get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
         get.item("#pergunta").dataset.status = "step-atual";      
-        setTimeout(function(){
+        feedbackIntervalo = setTimeout(function(){
             app.init();
             get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
             get.item("#captura").dataset.status = "step-atual";

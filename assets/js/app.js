@@ -34,6 +34,15 @@ var app = {
             });
         },false);
 
+        get.item("#agradecimento").addEventListener('click',function(){ 
+            if(typeof(feedbackIntervalo)!=null){
+                clearInterval(questionario.feedbackIntervalo);
+            }
+            app.init();
+            get.item("#todo>section[data-status='step-atual']").dataset.status = "no-active";
+            get.item("#captura").dataset.status = "step-atual";
+        },false);
+        
         get.item("#inserirCod>button[type='reset']").addEventListener('click',function(){ 
            stype = 1;
            app.initCapturaCodigo();

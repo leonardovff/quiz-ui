@@ -84,7 +84,7 @@ body, html{
 #instrucao-leitura .instrucoes{
 	top:13%;
 }
-.instrucoes{
+.instrucoes, #result{
 	margin: 0 2vw;
 	background: rgba(0, 0, 0, 0.7);
 	width: 96%;
@@ -123,10 +123,10 @@ h3{
 	position: absolute;
 	top:47%;
 	z-index: 51;
+	background: rgba(0, 0, 0, 0.7);
+	width: 96%;
 	color: white;
 	font-size: 5vw;
-	padding:20px;
-	width:100%;
 }
 #esq-baixo{
 	width: 58%;

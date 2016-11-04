@@ -39,10 +39,8 @@ body, html{
 	transition: 1s;
 }
 #qr-canvas{
-	width: 100%;
 	left:0;
 	position: absolute;
-	opacity: 1;
 }
 .step-captura{
 	overflow: auto;

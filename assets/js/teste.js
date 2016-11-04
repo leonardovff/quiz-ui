@@ -8,7 +8,7 @@ function testar(){
         testarResponder();
         // AL - 2,3,5,3,5
         // BA - 1,4,5,3,5
-    });
+    // });
 }
 function testarResponder(){
     setTimeout(function(){

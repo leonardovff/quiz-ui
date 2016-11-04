@@ -21,11 +21,10 @@ var vidhtml = '<video id="video" autoplay></video>';
 function initCanvas(w,h)
 {
     gCanvas = document.getElementById("qr-canvas");
-    // gCanvas.style.width = w + "px";
-    // gCanvas.style.height = h + "px";
+    gCanvas.style.width = w + "px";
+    gCanvas.style.height = h + "px";
     gCanvas.width = w;
     gCanvas.height = h;
-    gCanvas.httpeight = h;
     gCtx = gCanvas.getContext("2d");
     gCtx.clearRect(0, 0, w, h);
 }
@@ -85,23 +84,19 @@ function success(stream) {
     else
         v.src = stream;
     gUM=true;
-    // setTimeout(captureToCanvas, 500);
+    setTimeout(captureToCanvas, 500);
 }
         
 function error(error) {
     gUM=false;
     return;
 }
-
 function load()
 {
     initApp();
     if(isCanvasSupported() && window.File && window.FileReader)
     {
-        // get.item('#video').offsetWidth
-        // get.item('#video').offsetHeight  
-        var video_h = (get.item('#video').offsetHeight/100) * (((600*100)/get.item('#video').offsetWidth)+20);
-        initCanvas(600, video_h);
+        initCanvas(800, 600);
         qrcode.callback = app.resultadoLeitura;
         //document.getElementById("mainbody").style.display="inline";
         setwebcam();
@@ -149,9 +144,10 @@ function setwebcam2(options)
 {
     if(stype==1)
     {
-        // setTimeout(captureToCanvas, 500);    
+        setTimeout(captureToCanvas, 500);    
         return;
     }
+    console.log(options);
     var n=navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v=document.getElementById("video");
@@ -172,5 +168,5 @@ function setwebcam2(options)
    // document.getElementById("webcamimg").style.opacity=1.0;
 
     stype=1;
-    // setTimeout(captureToCanvas, 500);        
+    setTimeout(captureToCanvas, 500);        
 }

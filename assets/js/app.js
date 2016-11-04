@@ -98,6 +98,10 @@ var app = {
         get.item("#dir-baixo").style.backgroundColor = "#"+app.corPrimaria;
         get.item("#time").style.backgroundColor = "#"+app.corPrimaria;
         get.item("#esq-alto").style.backgroundColor = "#"+app.corPrimaria;
+        get.item("#inserirCod>h6").style.backgroundColor = "#"+app.corPrimaria;
+        get.item("#inserirCod>h4").style.backgroundColor = "#"+app.corPrimaria;
+        get.item("#inserir-manualmente").style.backgroundColor = "#"+app.corPrimaria;
+
         //secundaria
         get.item("#esq-baixo").style.backgroundColor = "#"+app.corSecundaria;
         get.item("#dir-alto").style.backgroundColor = "#"+app.corSecundaria;

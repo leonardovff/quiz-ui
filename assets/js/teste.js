@@ -2,7 +2,7 @@ function testar(){
     // get.item("#iniciar").click();
     // get.item("#inserir-manualmente").click();
     return true;
-    get.item("#hash_pw").value = "";
+    get.item("#hash_pw").value = "maivkt";
     app.login(function(){
         // app.resultadoLeitura("95012300000338");
         // testarResponder();

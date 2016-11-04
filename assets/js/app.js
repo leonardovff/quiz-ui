@@ -1,7 +1,7 @@
 var app = {
-    ambientes: ["http://10.83.3.192/sgo/","olimpiada.senai.br/oc2016/"],
-    ambiente: 0,
-    debugger: false,
+    ambientes: ["http://10.83.3.192/sgo/","http://olimpiada.senai.br/oc2016/"],
+    ambiente: 1,
+    debugger: true,
     codigo: null,
     regional: null,
     ocupacao: null,
@@ -26,6 +26,7 @@ var app = {
             console.log("enrtrou");
             app.resultadoLeitura(get.item("#cod-usuario").value, function(flag, detalhes){
                 if(flag){
+                    stype = 1;
                     return get.item("#cod-usuario").value = "";
                 }
                 alert(detalhes);

@@ -21,11 +21,10 @@ var vidhtml = '<video id="video" autoplay></video>';
 function initCanvas(w,h)
 {
     gCanvas = document.getElementById("qr-canvas");
-    // gCanvas.style.width = w + "px";
-    // gCanvas.style.height = h + "px";
+    gCanvas.style.width = w + "px";
+    gCanvas.style.height = h + "px";
     gCanvas.width = w;
     gCanvas.height = h;
-    gCanvas.httpeight = h;
     gCtx = gCanvas.getContext("2d");
     gCtx.clearRect(0, 0, w, h);
 }
@@ -98,10 +97,7 @@ function load()
     initApp();
     if(isCanvasSupported() && window.File && window.FileReader)
     {
-        // get.item('#video').offsetWidth
-        // get.item('#video').offsetHeight  
-        var video_h = (get.item('#video').offsetHeight/100) * (((600*100)/get.item('#video').offsetWidth)+20);
-        initCanvas($(window).width(), $(window).height());
+        initCanvas(800, 600);
         qrcode.callback = app.resultadoLeitura;
         //document.getElementById("mainbody").style.display="inline";
         setwebcam();

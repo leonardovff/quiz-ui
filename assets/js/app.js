@@ -139,6 +139,7 @@ var app = {
         if(typeof(callback)==="function") callback();
     },
     resultadoLeitura: function(a, callback){
+        get.item("result").innerHTML = a;
         a = htmlEntities(a);
         if(!validarCodigo(a)){ //validação do token
             erro = "Código inválido";

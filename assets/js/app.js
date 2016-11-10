@@ -22,6 +22,14 @@ var app = {
            app.abriCaixaCodigo();
         },false);
 
+        get.item('body').addEventListener('click', function(event) {
+            if (event.target.className.toLowerCase() === 'area') {        
+                var fullscren = controlFullScreen(document.querySelector('body'));
+                fullscren.open();
+                delete fullscren;
+            }
+        });
+
         get.item("#inserirCod>button[type='button']").addEventListener('click',function(){ 
             if(get.item("#cod-usuario").value == "") return false;
             app.resultadoLeitura(get.item("#cod-usuario").value, function(flag, detalhes){

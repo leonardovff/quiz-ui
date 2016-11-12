@@ -42,6 +42,7 @@ function captureToCanvas() {
             }
             catch(e){       
                 console.log(e,e.indexOf("found 0"));
+                         get.item("#result").innerHTML = e;
                 if(e.indexOf("found 0") === -1){
                     if(limparFeedback === null){
                         get.item("#result").innerHTML="- escaneando -";

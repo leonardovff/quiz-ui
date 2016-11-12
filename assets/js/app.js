@@ -159,6 +159,7 @@ var app = {
         if(typeof(callback)=="function"){
             callback(true);
         }
+         get.item("#result").innerHTML = a;
         app.codigo = a;
         questionario.start();
     }, 

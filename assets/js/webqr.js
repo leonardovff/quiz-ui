@@ -52,15 +52,15 @@ function captureToCanvas() {
                     limparFeedback = setTimeout(function(){
                         limparFeedback = null;
                         get.item("#result").innerHTML="";    
-                    }, 200);
+                    }, 100);
 
                 }
-                setTimeout(captureToCanvas, 200);
+                setTimeout(captureToCanvas, 100);
             };
         }
         catch(e){       
                 console.log(e);
-                setTimeout(captureToCanvas, 200);
+                setTimeout(captureToCanvas, 100);
         };
     }
 }

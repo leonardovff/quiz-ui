@@ -1,7 +1,7 @@
-var app = {
-    ambientes: ["http://10.83.3.192/sgo/","//olimpiada.senai.br/oc2016/"],
-    ambiente: 0,
-    debugger: true,
+﻿var app = {
+    ambientes: ["http://10.83.3.192/sgo/","//olimpiada.senai.br/oc2016/", "/sgo2016/"],
+    ambiente: 2,
+    debugger: false,
     codigo: null,
     regional: null,
     ocupacao: null,
@@ -29,7 +29,7 @@ var app = {
                 delete fullscren;
             }
         });
-
+        
         get.item("#inserirCod>button[type='button']").addEventListener('click',function(){ 
             if(get.item("#cod-usuario").value == "") return false;
             app.resultadoLeitura(get.item("#cod-usuario").value, function(flag, detalhes){
@@ -52,13 +52,12 @@ var app = {
         },false);
         
         get.item("#inserirCod>button[type='reset']").addEventListener('click',function(){ 
-           stype = 1;
-           app.initCapturaCodigo();
+            stype = 1;
+            app.initCapturaCodigo();
         },false);
 
         get.item("#confirmar").addEventListener('click',function(){ 
-            console.log("entrou");
-           questionario.next();
+            questionario.next();
         },false);
         get.item('body').addEventListener('click', function(event) {
             if (event.target.className.toLowerCase() === 'alternativas') {        
@@ -91,6 +90,7 @@ var app = {
             get.item("#entrar").className="";
             app.uploadLayot();
             app.init(callback);
+            localStorage.setItem("hash",hash);
         });
         if(app.debugger)
             return true;
@@ -174,5 +174,9 @@ var app = {
 }
 function initApp(){
     app.setEvents();
-    testar();
+    var hash = localStorage.getItem("hash");
+    if(hash!=null){
+        get.item("#hash_pw").value = hash;
+        app.login();
+    }
 }

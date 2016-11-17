@@ -1,4 +1,5 @@
 function testar(){
+    return false;
     get.item("#hash_pw").value = "";
     //app.login(function(){
         get.item("#iniciar").click();
